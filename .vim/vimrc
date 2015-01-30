@@ -1,0 +1,193 @@
+set mouse=a
+if has('mouse_sgr')
+  set ttymouse=sgr
+endif
+
+syntax on
+
+colorscheme molokai
+
+set backspace=indent,eol,start
+set nocompatible
+set autochdir
+set nowrap
+set nobackup
+set noswapfile
+set showmatch
+set matchtime=2
+set number
+set encoding=utf-8
+set foldmethod=manual
+set nofoldenable
+set expandtab
+set gdefault
+set softtabstop=4
+set shiftwidth=2
+set tabstop=4
+set laststatus=2
+set hlsearch
+
+if has("gui_running")
+    set guifont=Sauce\ Code\ Powerline:h12
+endif
+
+filetype on
+filetype plugin on
+filetype indent on
+
+if has("gui_macvim")
+    set macmeta
+endif
+
+command! LN set nonumber!
+command! RC :source $MYVIMRC
+command! W w !sudo tee % > /dev/null
+
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
+map ∆ <C-W>J
+map ˚ <C-W>K
+map ˙ <C-W>H
+map ¬ <C-W>L
+map <Right> 5<C-W>>
+map <Left> 5<C-W><
+map <Up> 5<C-W>+
+map <Down> 5<C-W>-
+
+nnoremap <CR> :noh<CR>
+noremap <F4> :!~/bin/syn %<CR>
+noremap <F2> :retab!<CR>
+noremap gw :Autoformat<CR><CR>
+
+imap <C-c> <CR><Esc>O
+
+execute pathogen#infect()
+let g:localvimrc_ask = 0
+
+let g:promptline_preset = {
+    \'a' : [ promptline#slices#user() ],
+    \'c' : [ promptline#slices#cwd() ],
+    \'y' : [ promptline#slices#vcs_branch(), promptline#slices#git_status() ]}
+    "\'b' : [ promptline#slices#host() ],
+let g:lightline = {
+      \ 'colorscheme': 'molokai',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'MyFugitive',
+      \   'filename': 'MyFilename',
+      \   'fileformat': 'MyFileformat',
+      \   'filetype': 'MyFiletype',
+      \   'fileencoding': 'MyFileencoding',
+      \   'mode': 'MyMode',
+      \   'ctrlpmark': 'CtrlPMark',
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
+      \ },
+      \ }
+
+function! MyModified()
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+function! MyReadonly()
+  return &ft !~? 'help' && &readonly ? 'RO' : ''
+endfunction
+function! MyFilename()
+  let fname = expand('%:t')
+  return fname == 'ControlP' ? g:lightline.ctrlp_item :
+        \ fname == '__Tagbar__' ? g:lightline.fname :
+        \ fname =~ '__Gundo\|NERD_tree' ? '' :
+        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \ &ft == 'unite' ? unite#get_status_string() :
+        \ &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+function! MyFugitive()
+  try
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      let mark = ''  " edit here for cool mark
+      let _ = fugitive#head()
+      return strlen(_) ? mark._ : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+function! MyMode()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? 'Tagbar' :
+        \ fname == 'ControlP' ? 'CtrlP' :
+        \ fname == '__Gundo__' ? 'Gundo' :
+        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ &ft == 'unite' ? 'Unite' :
+        \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ &ft == 'vimshell' ? 'VimShell' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+let g:tagbar_status_func = 'TagbarStatusFunc'
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+    let g:lightline.fname = a:fname
+  return lightline#statusline(0)
+endfunction
+
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
+
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimshell_force_overwrite_statusline = 0
+let g:indent_guides_start_level = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=1002
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=1003
+
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
+endif
+
+let g:ctrlp_lazy_update = 1
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist/*'
+let g:ctrlp_by_filename = 1
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 100
+
+noremap <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
