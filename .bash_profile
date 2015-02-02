@@ -7,6 +7,8 @@ unset USERNAME
 export GOPATH=/Users/allans/Documents/go/
 export CLICOLOR=1
 export TERM=xterm-256color
+export gnarleyHostName=`hostname | cut -d\.  -f1`
+export PS1="[\[\e[37;1m\]\u\[\e[31;1m\]@\[\e[37;1m\]$gnarleyHostName\[\e[0m\]]\[\e[32m\] \w/$\[\e[0m\] "
 
 alias lg="ls -gahS"
 alias la="ls -la"
