@@ -11,5 +11,4 @@ ln -s "$PWD/.bash_profile" ~/.bash_profile
 ln -s "$PWD/.inputrc" ~/.inputrc
 ln -s "$PWD/.gitconfig" ~/.gitconfig
 ln -s "$PWD/.profile" ~/.profile
-ln -s ~/.vim/bundle/vim-colorschemes/colors ~/.vim/colors
 
