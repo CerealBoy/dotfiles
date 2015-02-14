@@ -8,3 +8,5 @@
 	lg = log --no-merges --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 [core]
 	editor = vim
+[push]
+	default = simple
