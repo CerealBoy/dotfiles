@@ -1,0 +1,19 @@
+
+startup_message off
+vbell off
+defscrollback 3000
+
+bind -c selectHighs 0 select 10
+bind -c selectHighs 1 select 11
+bind -c selectHighs 2 select 12
+bind -c selectHighs 3 select 13
+bind -c selectHighs 4 select 14
+bind -c selectHighs 5 select 15
+
+bind - command -c selectHighs
+shell "/bin/bash" 
+
+shelltitle "$ |bash"
+hardstatus alwayslastline                                                                                                                          
+hardstatus string '%{= kG}[ %{G}%H %{G}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+
