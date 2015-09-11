@@ -12,9 +12,9 @@ export gnarleyHostName=`hostname | cut -d\.  -f1`
 export PS1="[\[\e[37;1m\]\u\[\e[31;1m\]@\[\e[37;1m\]$gnarleyHostName\[\e[0m\]]\[\e[32m\] \w/$\[\e[0m\] "
 export WATCHDIR=home:/share/CACHEDEV1_DATA/Download/transmission/watch/
 
-alias ls="ls --color=auto"
-alias lg="ls -gahS"
 alias la="ls -la"
+alias lg="ls -gahS"
+alias ls="ls -G"
 alias hist="sort | uniq -c | sort -nr"
 
 alias wow="git status"
