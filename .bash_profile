@@ -21,3 +21,9 @@ alias wow="git status"
 alias such="git"
 alias very="git"
 
+#function dock-php() {
+#  DIR=$(readlink -f $(pwd))
+#  ARGS=$*
+#  docker run --rm -v "$DIR":/app -w /app php php $ARGS
+#}
+
