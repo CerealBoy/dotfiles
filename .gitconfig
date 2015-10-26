@@ -8,7 +8,5 @@
 	lg = log --no-merges --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 [core]
 	editor = vim
-[url "git@git.corp.yahoo.com:"]
-	insteadOf = https://git.corp.yahoo.com/
 [push]
 	default = simple
