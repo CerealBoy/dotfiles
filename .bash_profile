@@ -1,3 +1,4 @@
+# .bash_profile - making bash that much better
 
 unset USERNAME
 
@@ -15,8 +16,10 @@ export WATCHDIR=home:/share/CACHEDEV1_DATA/Download/transmission/watch/
 alias la="ls -la"
 alias lg="ls -gahS"
 alias ls="ls -G"
+alias lr="ls -lart"
 alias hist="sort | uniq -c | sort -nr"
 
+# doge git
 alias wow="git status"
 alias such="git"
 alias very="git"
