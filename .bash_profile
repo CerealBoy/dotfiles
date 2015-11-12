@@ -13,16 +13,16 @@ export gnarleyHostName=`hostname | cut -d\.  -f1`
 export PS1="[\[\e[37;1m\]\u\[\e[31;1m\]@\[\e[37;1m\]$gnarleyHostName\[\e[0m\]]\[\e[32m\] \w/$\[\e[0m\] "
 export WATCHDIR=home:/share/CACHEDEV1_DATA/Download/transmission/watch/
 
-alias la="ls -la"
-alias lg="ls -gahS"
-alias ls="ls -G"
-alias lr="ls -lart"
+alias la="ls -la --color=auto"
+alias lg="ls -gahS --color=auto"
+alias ls="ls -G --color=auto"
+alias lr="ls -lart --color=auto"
 alias hist="sort | uniq -c | sort -nr"
 
 # doge git
 alias wow="git status"
-alias such="git"
-alias very="git"
+alias such="git $*"
+alias very="git $*"
 
 #function dock-php() {
 #  DIR=$(readlink -f $(pwd))

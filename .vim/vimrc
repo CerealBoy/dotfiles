@@ -28,10 +28,6 @@ set showmatch
 set softtabstop=4
 set tabstop=4
 
-if has("gui_running")
-    set guifont=Sauce\ Code\ Powerline:h12
-endif
-
 filetype on
 filetype plugin on
 filetype indent on
@@ -73,7 +69,7 @@ let g:promptline_preset = {
     \'y' : [ promptline#slices#vcs_branch(), promptline#slices#git_status() ]}
     "\'b' : [ promptline#slices#host() ],
 let g:lightline = {
-      \ 'colorscheme': 'molokai',
+      \ 'colorscheme': 'wombat',
       \ 'component': {
       \   'readonly': '%{&readonly?"":""}',
       \ },
