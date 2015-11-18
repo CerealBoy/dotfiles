@@ -1,9 +1,13 @@
 # .bash_profile - making bash that much better
 
 unset USERNAME
+if [ "$HOME" = "" ]; then
+    echo "No HOME found, setting one"
+    export HOME=~
+fi
 
 export GOPATH=~/Documents/go
-PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:/home/allans/bin:/usr/local/mysql/bin:/home/y/bin:/home/y/bin64:/home/allans:/usr/local/go/bin:$GOPATH/bin
+PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/home/y/bin:/home/y/bin64:~:/usr/local/go/bin:$GOPATH/bin:~/.composer/vendor/bin
 export PATH
 
 export GOPATH=$GOPATH/
