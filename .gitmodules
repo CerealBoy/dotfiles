@@ -64,3 +64,6 @@
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url = git@github.com:tpope/vim-surround.git
+[submodule ".vim/bundle/vim-alda"]
+	path = .vim/bundle/vim-alda
+	url = git@github.com:daveyarwood/vim-alda.git

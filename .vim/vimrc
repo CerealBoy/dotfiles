@@ -23,7 +23,7 @@ set noswapfile
 set nowrap
 set number
 set ruler
-set shiftwidth=2
+set shiftwidth=4
 set showmatch
 set softtabstop=4
 set tabstop=4
