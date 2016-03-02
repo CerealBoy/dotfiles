@@ -6,10 +6,11 @@ if [ "$HOME" = "" ]; then
     export HOME=~
 fi
 
-export GOPATH=~/Documents/go
+export GOPATH=/opt/go
 PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/home/y/bin:/home/y/bin64:~:/usr/local/go/bin:$GOPATH/bin:~/.composer/vendor/bin
 export PATH
 
+export GOROOT=$GOPATH
 export GOPATH=$GOPATH/
 export CLICOLOR=1
 export TERM=xterm-256color
