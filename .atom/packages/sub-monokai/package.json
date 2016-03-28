@@ -1,0 +1,35 @@
+{
+  "name": "sub-monokai",
+  "theme": "syntax",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A monokai theme, inspired by SublimeText",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmoutal/sub-monokai.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">1.0"
+  },
+  "readme": "# A Monokai Theme\n## Inspired by Sublime Text\n\nA Monokai syntax theme for Atom.\n\nForked from [kevinsawicki's Monokai](https://github.com/kevinsawicki/monokai) Theme, but made more consistent with the theme from Sublime Text\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/dmoutal/sub-monokai/issues"
+  },
+  "homepage": "https://github.com/dmoutal/sub-monokai#readme",
+  "_id": "sub-monokai@1.0.0",
+  "_shasum": "c78b39ab45ae7062c50a25cbed0572ef304c7abb",
+  "_resolved": "file:../d-116224-12270-h6x8g1/package.tgz",
+  "_from": "../d-116224-12270-h6x8g1/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

@@ -5,7 +5,7 @@
 	st = status
 	ci = commit
 	br = branch
-	lg = log --no-merges --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	gl = log --no-merges --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 [core]
 	editor = vim
 [push]

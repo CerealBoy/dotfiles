@@ -1,0 +1,45 @@
+.source.css {
+    .entity {
+      &.other {
+        &.attribute-name {
+          color: @px-blue;
+        }
+        &.inherited-class {
+          color: @px-green;
+        }
+      }
+    }
+    .support {
+      &.function {
+        color: @px-orange;
+        &.builtin {
+          color: @px-yellow;
+        }
+      }
+      &.type {
+        color: @px-yellow;
+      }
+      &.constant {
+        color: @px-green;
+      }
+      &.class,
+      &.variable,
+      &.other.module {
+        color: @px-orange;
+      }
+    }
+    .variable {
+      &.parameter,
+      &.other {
+        color: @px-red;
+      }
+    }
+    .constant {
+      &.language,
+      &.character,
+      &.numeric,
+      &.other {
+        color: @px-orange;
+      }
+    }
+}

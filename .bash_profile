@@ -28,9 +28,17 @@ alias wow="git status"
 alias such="git $*"
 alias very="git $*"
 
+# run direnv setup
+eval "$(direnv hook bash)"
+
 #function dock-php() {
 #  DIR=$(readlink -f $(pwd))
 #  ARGS=$*
 #  docker run --rm -v "$DIR":/app -w /app php php $ARGS
 #}
 
+# simpler master update for git
+function gitu {
+    BRANCH=${1:-master}
+    git checkout "$BRANCH" && git fetch origin && git merge --ff-only origin/"$BRANCH"
+}

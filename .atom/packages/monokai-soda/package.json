@@ -1,0 +1,35 @@
+{
+  "name": "monokai-soda",
+  "theme": "syntax",
+  "version": "0.5.0",
+  "private": true,
+  "description": "A modified version of monokai syntax theme for Atom",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbeEstrada/monokai-soda.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "readme": "# Monokai Soda theme\n\nA modified version of monokai syntax theme for Atom\n\nOriginally converted from the [TextMate](https://github.com/buymeasoda/soda-theme/) theme using [TextMate bundle converter](http://atom.io/docs/latest/converting-a-text-mate-theme).\n\n![Screenshot](https://f.cloud.github.com/assets/7937/2347992/f478d74c-a552-11e3-9071-2c92f83f0108.png)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/AbeEstrada/monokai-soda/issues"
+  },
+  "homepage": "https://github.com/AbeEstrada/monokai-soda#readme",
+  "_id": "monokai-soda@0.5.0",
+  "_shasum": "af50cbc3f3f760093183bfc94e7ab3004ef5e17c",
+  "_resolved": "file:../d-116224-12304-g3uq8h/package.tgz",
+  "_from": "../d-116224-12304-g3uq8h/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

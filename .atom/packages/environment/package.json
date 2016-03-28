@@ -1,0 +1,85 @@
+{
+  "name": "environment",
+  "main": "./lib/main",
+  "version": "1.2.0",
+  "description": "Environment patches the environment for versions of Atom < 1.7.0.",
+  "keywords": [
+    "environment",
+    "osx",
+    "mac"
+  ],
+  "author": {
+    "name": "Joe Fitzgerald",
+    "email": "jfitzgerald@pivotal.io",
+    "url": "http://github.com/joefitzgerald"
+  },
+  "homepage": "https://atom.io/packages/environment",
+  "bugs": {
+    "url": "https://github.com/atom-community/environment/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atom-community/environment.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "semver": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.4.0",
+    "babel-eslint": "^6.0.0-beta.6",
+    "eslint-config-standard": "^5.1.0",
+    "eslint-plugin-standard": "^1.3.2",
+    "eslint-plugin-promise": "^1.1.0"
+  },
+  "providedServices": {
+    "environment": {
+      "versions": {
+        "0.1.0": "provide",
+        "1.0.0": "provide"
+      }
+    }
+  },
+  "readme": "# environment [![Build Status](https://travis-ci.org/atom-community/environment.svg)](https://travis-ci.org/atom-community/environment)\n\nA package for the [Atom Editor](https://atom.io) that provides a normalized environment as a service to other packages. The service can be consumed by placing the following in your `package.json` file:\n\n```json\n{\n  \"name\": \"your-package-name\",\n  \"main\": \"./lib/main\",\n  \"<...>\": \"<other parts of your package.json here>\",\n  \"consumedServices\": {\n    \"environment\": {\n      \"versions\": {\n        \"1.0.0\": \"consumeEnvironment\"\n      }\n    }\n  }\n}\n```\n\nThen, in your `main.js` file, add the following:\n\n```javascript\nconsumeEnvironment (environment) {\n  this.environment = environment\n}\n```\n\nThe environment is a hash, of the same format as that provided by `process.env`.\n\n## What Does This Package Actually Do?\n\nOn platforms other than Mac OS X, the environment that this package provides is identical to `process.env`.\n\nOn Mac OS X, a check is made to determine whether `atom` was launched from a terminal, or if it was launched via `Dock`, `Finder`, `Spotlight`, or `open` (i.e. `launchctl` launched processes).\n\nIf `atom` was launched by a `launchctl` launched process, the environment available to `atom` is anaemic. This is particularly problematic for packages that depend on a sane environment to function correctly (e.g. anything that launches an external process).\n\nIf the environment is not sane, this package will launch the user's shell (as defined in `process.env.SHELL`) and then run `env` from that shell. The resulting environment is captured and then provided to any consumer of this service.\n\nThis package will also delete the `DYLD_INSERT_LIBRARIES` environment variable (if set) from the environment on OS X.\n",
+  "readmeFilename": "README.md",
+  "_id": "environment@1.2.0",
+  "_shasum": "7eabf16d52166f4a9db7ff09f2727dc2a131d291",
+  "_resolved": "file:../d-116223-16329-ncbmvq/package.tgz",
+  "_from": "../d-116223-16329-ncbmvq/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "semver",
+        "version": "5.1.0",
+        "path": "node_modules/semver/semver.js"
+      }
+    ],
+    "extensions": {
+      ".js": [
+        "lib/environment-helpers.js",
+        "lib/main.js",
+        "node_modules/semver/semver.js"
+      ],
+      ".json": [
+        "node_modules/semver/package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          "",
+          "spec"
+        ],
+        "dependencies": {
+          "semver": "^5.1.0"
+        }
+      }
+    ]
+  }
+}

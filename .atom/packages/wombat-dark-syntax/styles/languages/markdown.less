@@ -1,0 +1,68 @@
+atom-text-editor, :host {
+  .gfm {
+    .markup.italic {
+      color:@px-yellow;
+      font-style: italic;
+    }
+    .markup.bold {
+      color:@px-red;
+      font-weight:bold;
+    }
+    .markup.strike {
+      text-decoration:line-through;
+      color:@px-comment;
+    }
+    .markup.bold.italic {
+      color:@px-blue;
+      font-weight:bold;
+      font-style: italic;
+    }
+    .markup.heading.heading-1 {
+      color:@px-text;
+      font-weight:bold;
+      font-size : ~"calc(30px)";
+    }
+    .markup.heading.heading-2 {
+      color:@px-text;
+      font-weight:bold;
+      font-size : ~"calc(26px)";
+    }
+    .markup.heading.heading-3 {
+      color:@px-text;
+      font-weight:bold;
+      font-size : ~"calc(22px)";
+    }
+    .markup.heading.heading-4 {
+      color:@px-text;
+      font-weight:bold;
+      font-size : ~"calc(20px)";
+    }
+    .markup.heading.heading-5 {
+      color:@px-text;
+      font-weight:bold;
+      font-size : ~"calc(18px)";
+    }
+    .markup.heading.heading-6 {
+      color:@px-text;
+      font-weight:bold;
+      font-size : ~"calc(16px)";
+    }
+    .markup.heading.marker {
+      color:@px-text;
+    }
+    .link {
+      color:@px-blue;
+      //text-decoration:underline;
+    }
+    .link .entity {
+      color:@px-select;
+    }
+    .raw {
+      color:@px-code;
+    }
+    .comment {
+      color:@px-comment;
+      font-style: italic;
+    }
+  }
+}
