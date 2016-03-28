@@ -1,25 +1,25 @@
 "*":
-    core:
-        excludeVcsIgnoredPaths: false
-        themes: [
-            "dark-flat-ui"
-            "outlander-syntax"
-        ]
-    "dark-flat-ui":
-        accentColor: "purple"
-    editor:
-        invisibles: {}
-        preferredLineLength: 120
-        showInvisibles: true
-        tabLength: 4
-    "exception-reporting":
-        userId: ""
-    "php-cs-fixer":
-        executablePath: "/usr/local/bin/php-cs-fixer"
-        executeOnSave: true
-        showInfoNotifications: true
-    "php-fmt": {}
-    "tree-view": {}
-    "vim-mode": {}
-    welcome:
-        showOnStartup: false
+  core:
+    excludeVcsIgnoredPaths: false
+    themes: [
+      "dark-flat-ui"
+      "outlander-syntax"
+    ]
+  "dark-flat-ui":
+    accentColor: "purple"
+  editor:
+    invisibles: {}
+    preferredLineLength: 120
+    showInvisibles: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "cbf1b7ac-2c03-edd2-a857-60cf6142f0fe"
+  "php-cs-fixer":
+    executablePath: "/usr/local/bin/php-cs-fixer"
+    executeOnSave: true
+    showInfoNotifications: true
+  "php-fmt": {}
+  "tree-view": {}
+  "vim-mode": {}
+  welcome:
+    showOnStartup: false
