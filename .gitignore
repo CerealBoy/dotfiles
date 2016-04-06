@@ -3,3 +3,4 @@
 .atom/storage
 .atom/.node-gyp
 .atom/.npm
+.atom/nohup.out

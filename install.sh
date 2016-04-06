@@ -10,6 +10,12 @@ sudo cp direnv /usr/local/bin/direnv
 sudo chmod a+x /usr/local/bin/direnv
 cd ..
 
+# install icdiff
+cd icdiff
+sudo cp *cdiff /usr/local/bin/
+sudo chmod a+x /usr/local/bin/*cdiff
+cd ..
+
 # remove the old files
 rm -rf ~/.vim ~/.vimrc ~/.bashrc ~/.bash_profile ~/.inputrc ~/.gitconfig ~/.profile ~/.screenrc ~/.atom
 

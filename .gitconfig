@@ -6,6 +6,8 @@
 	ci = commit
 	br = branch
 	gl = log --no-merges --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	pf = push --force
+	diff = icdiff
 [core]
 	editor = vim
 [push]
