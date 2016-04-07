@@ -17,7 +17,9 @@ sudo chmod a+x /usr/local/bin/*cdiff
 cd ..
 
 # remove the old files
-rm -rf ~/.vim ~/.vimrc ~/.bashrc ~/.bash_profile ~/.inputrc ~/.gitconfig ~/.profile ~/.screenrc ~/.atom
+if [ -f ~/.vim && -f ~/.gitconfig ]; then
+	rm ~/.vim ~/.vimrc ~/.bashrc ~/.bash_profile ~/.inputrc ~/.gitconfig ~/.profile ~/.screenrc ~/.atom;
+fi
 
 # symlink them in
 ln -s "$PWD/.vim" ~/.vim

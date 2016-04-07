@@ -73,3 +73,6 @@
 [submodule "direnv"]
 	path = direnv
 	url = git@github.com:direnv/direnv.git
+[submodule "icdiff"]
+	path = icdiff
+	url = git@github.com:jeffkaufman/icdiff.git
