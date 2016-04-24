@@ -9,6 +9,7 @@ class Formatter {
     this.goconfig = goconfigFunc
     this.subscriptions = new CompositeDisposable()
     this.saveSubscriptions = new CompositeDisposable()
+    this.updatingFormatterCache = false
     this.setToolLocations()
     this.observeConfig()
     this.handleCommands()
@@ -29,6 +30,7 @@ class Formatter {
     this.formatTool = null
     this.toolCheckComplete = null
     this.formatterCache = null
+    this.updatingFormatterCache = null
     this.toolLocations = null
   }
 
@@ -44,19 +46,19 @@ class Formatter {
     atom.project.onDidChangePaths((projectPaths) => {
       this.updateFormatterCache()
     })
-    this.subscriptions.add(atom.commands.add('atom-workspace', 'golang:gofmt', () => {
+    this.subscriptions.add(atom.commands.add('atom-text-editor[data-grammar~="go"]', 'golang:gofmt', () => {
       if (!this.ready() || !this.getEditor()) {
         return
       }
       this.format(this.getEditor(), 'gofmt')
     }))
-    this.subscriptions.add(atom.commands.add('atom-workspace', 'golang:goimports', () => {
+    this.subscriptions.add(atom.commands.add('atom-text-editor[data-grammar~="go"]', 'golang:goimports', () => {
       if (!this.ready() || !this.getEditor()) {
         return
       }
       this.format(this.getEditor(), 'goimports')
     }))
-    this.subscriptions.add(atom.commands.add('atom-workspace', 'golang:goreturns', () => {
+    this.subscriptions.add(atom.commands.add('atom-text-editor[data-grammar~="go"]', 'golang:goreturns', () => {
       if (!this.ready() || !this.getEditor()) {
         return
       }
@@ -70,7 +72,6 @@ class Formatter {
       if (this.toolCheckComplete) {
         this.toolCheckComplete[formatTool] = false
       }
-
       this.checkForTool(formatTool)
     }))
     this.subscriptions.add(atom.config.observe('gofmt.formatOnSave', (formatOnSave) => {
@@ -105,19 +106,34 @@ class Formatter {
     }))
   }
 
+  ready () {
+    return this.goconfig && this.goconfig() && !this.updatingFormatterCache && this.formatterCache && this.formatterCache.size > 0
+  }
+
+  resetFormatterCache () {
+    this.formatterCache = null
+  }
+
   updateFormatterCache () {
-    if (!this.goconfig) {
-      return
+    if (this.updatingFormatterCache) {
+      return Promise.resolve(false)
     }
+    this.updatingFormatterCache = true
+
+    if (!this.goconfig || !this.goconfig()) {
+      this.updatingFormatterCache = false
+      return Promise.resolve(false)
+    }
+
     let config = this.goconfig()
-    if (!config) {
-      return
-    }
     let cache = new Map()
     let paths = atom.project.getPaths()
     paths.push(false)
     let promises = []
     for (let p of paths) {
+      if (p && p.includes('://')) {
+        continue
+      }
       for (let tool of ['gofmt', 'goimports', 'goreturns']) {
         let key = tool + ':' + p
         let options = { directory: p }
@@ -135,8 +151,16 @@ class Formatter {
         }))
       }
     }
-    Promise.all(promises).then(() => {
+    return Promise.all(promises).then(() => {
       this.formatterCache = cache
+      this.updatingFormatterCache = false
+      return this.formatterCache
+    }).catch((e) => {
+      if (e.handle) {
+        e.handle()
+      }
+      console.log(e)
+      this.updatingFormatterCache = false
     })
   }
 
@@ -168,9 +192,13 @@ class Formatter {
         return result.projectPath
       }
     }
-
-    if (atom.project.getPaths().length) {
-      return atom.project.getPaths()[0]
+    let paths = atom.project.getPaths()
+    if (paths && paths.length) {
+      for (let p of paths) {
+        if (p && !p.includes('://')) {
+          return p
+        }
+      }
     }
 
     return false
@@ -183,8 +211,9 @@ class Formatter {
     let config = this.goconfig()
     return config.locator.findTool(toolName, options).then((cmd) => {
       if (cmd) {
-        this.updateFormatterCache()
-        return cmd
+        return this.updateFormatterCache().then(() => {
+          return cmd
+        })
       }
 
       if (!this.toolCheckComplete) {
@@ -206,7 +235,7 @@ class Formatter {
             packagePath: packagePath,
             type: 'missing'
           }).then(() => {
-            this.updateFormatterCache()
+            return this.updateFormatterCache()
           }).catch((e) => {
             console.log(e)
           })
@@ -263,10 +292,6 @@ class Formatter {
     return options
   }
 
-  ready () {
-    return this.goconfig && this.goconfig()
-  }
-
   format (editor = this.getEditor(), tool = this.formatTool, filePath) {
     if (!this.ready() || !this.isValidEditor(editor) || !editor.getBuffer()) {
       return
@@ -286,10 +311,9 @@ class Formatter {
     let config = this.goconfig()
     let options = this.getExecutorOptions(editor)
     options.input = editor.getText()
-    let cursor = editor.getCursorBufferPosition()
     let args = ['-e']
     if (filePath) {
-      if (formatCmd.startsWith('goimports')) {
+      if (tool === 'goimports') {
         args.push('--srcdir')
         args.push(path.dirname(filePath))
       }
@@ -302,9 +326,6 @@ class Formatter {
     }
     if (r.exitcode === 0) {
       editor.getBuffer().setTextViaDiff(r.stdout)
-      if (cursor) {
-        editor.setCursorBufferPosition(cursor, {autoscroll: false})
-      }
     }
   }
 }

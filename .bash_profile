@@ -30,6 +30,7 @@ alias hist="sort | uniq -c | sort -nr"
 alias wow="git status"
 alias such="git $*"
 alias very="git $*"
+alias ic="git-icdiff"
 
 # run direnv setup
 eval "$(direnv hook bash)"
@@ -43,5 +44,6 @@ eval "$(direnv hook bash)"
 # simpler master update for git
 function gitu {
     BRANCH=${1:-master}
-    git checkout "$BRANCH" && git fetch origin && git merge --ff-only origin/"$BRANCH"
+    BRANCH_TWO=${2:-master}
+    git checkout "$BRANCH" && git fetch origin && git merge --ff-only origin/"$BRANCH_TWO"
 }

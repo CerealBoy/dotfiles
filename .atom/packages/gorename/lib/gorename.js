@@ -26,11 +26,32 @@ class Gorename {
       }
 
       let info = this.wordAndOffset(editor)
+      let cursor = editor.getCursorBufferPosition()
+
       let dialog = new RenameDialog(info.word, (newName) => {
         this.saveAllEditors()
         let file = editor.getBuffer().getPath()
         let cwd = path.dirname(file)
+
+        // restore cursor position after gorename completes and the buffer is reloaded
+        if (cursor) {
+          let disp = editor.getBuffer().onDidReload(() => {
+            editor.setCursorBufferPosition(cursor, {autoscroll: false})
+            let element = atom.views.getView(editor)
+            if (element) {
+              element.focus()
+            }
+            disp.dispose()
+          })
+        }
         this.runGorename(file, info.offset, cwd, newName, cmd)
+      })
+      dialog.onCancelled(() => {
+        editor.setCursorBufferPosition(cursor, {autoscroll: false})
+        let element = atom.views.getView(editor)
+        if (element) {
+          element.focus()
+        }
       })
       dialog.attach()
       return

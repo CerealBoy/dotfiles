@@ -172,6 +172,10 @@ class Locator {
       return Promise.resolve(false)
     }
 
+    if (!this.toolStrategies) {
+      return Promise.resolve(false)
+    }
+
     let strategy = false
     return Promise.resolve(null).then(() => {
       if (this.toolStrategies.has(name)) {
@@ -191,6 +195,10 @@ class Locator {
         }
 
         if (strategy === 'GOROOTBIN') {
+          if (name === 'go' && runtime.path.endsWith('goapp' + runtime.GOEXE)) {
+            return path.join(runtime.GOROOT, 'bin', 'goapp' + runtime.GOEXE)
+          }
+
           return path.join(runtime.GOROOT, 'bin', name + runtime.GOEXE)
         } else if (strategy === 'GOTOOLDIR') {
           return path.join(runtime.GOTOOLDIR, name + runtime.GOEXE)
@@ -376,7 +384,7 @@ class Locator {
       for (let executable of executables) {
         let candidate = path.join(element, executable)
         let stat = this.statishSync(candidate)
-        if (isTruthy(stat) && stat.isFile()) {
+        if (isTruthy(stat) && stat.isFile() && stat.size > 0) {
           candidates.push(candidate)
         }
       }
@@ -502,8 +510,11 @@ class Locator {
         item = path.join(element, toolName + this.executableSuffix)
       }
 
-      if (fs.existsSync(item) && fs.statSync(item).isFile()) {
-        return item
+      if (fs.existsSync(item)) {
+        let stat = fs.statSync(item)
+        if (stat && stat.isFile() && stat.size > 0) {
+          return item
+        }
       }
     }
 

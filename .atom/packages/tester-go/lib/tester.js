@@ -278,6 +278,9 @@ class Tester {
 
         let cmd = go
         let args = ['test', '-coverprofile=' + this.coverageFile]
+        if (atom.config.get('tester-go.runCoverageWithShortFlag')) {
+          args.push('-short')
+        }
         let executorOptions = this.getExecutorOptions(editor)
         return config.executor.exec(cmd, args, executorOptions).then((r) => {
           if (r.stderr && r.stderr.trim() !== '') {

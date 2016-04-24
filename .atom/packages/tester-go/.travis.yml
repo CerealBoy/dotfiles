@@ -3,7 +3,7 @@ notifications:
     on_success: never
     on_failure: change
 
-sudo: required
+sudo: false
 
 os:
   - linux
@@ -25,6 +25,14 @@ env:
 script:
   - go get -u golang.org/x/tools/cmd/cover
   - 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh'
+
+addons:
+  apt:
+    packages:
+    - build-essential
+    - git
+    - libgnome-keyring-dev
+    - fakeroot
 
 git:
   depth: 10

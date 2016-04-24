@@ -4,6 +4,7 @@ import {CompositeDisposable} from 'atom'
 
 class RenameDialog {
   constructor (identifier, callback) {
+    this.identifier = identifier
     this.callback = callback
     this.element = document.createElement('div')
     this.element.classList.add('gorename')
@@ -11,6 +12,8 @@ class RenameDialog {
     this.subscriptions = new CompositeDisposable()
     this.subscriptions.add(atom.commands.add(this.element, 'core:cancel', () => { this.cancel() }))
     this.subscriptions.add(atom.commands.add(this.element, 'core:confirm', () => { this.confirm() }))
+
+    this.oncancel = null
 
     let message = document.createElement('div')
     message.textContent = `Rename ${identifier} to:`
@@ -26,11 +29,21 @@ class RenameDialog {
     this.panel = atom.workspace.addModalPanel({
       item: this.element
     })
+    this.input.model.setText(this.identifier)
+    this.input.model.selectAll()
     this.input.focus()
+  }
+
+  onCancelled (callback) {
+    this.oncancel = callback
   }
 
   cancel () {
     this.close()
+    if (this.oncancel) {
+      this.oncancel()
+      this.oncancel = null
+    }
   }
 
   confirm () {

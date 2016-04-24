@@ -9,7 +9,7 @@
     "symbol"
   ],
   "main": "./lib/main",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joefitzgerald/navigator-godef.git"
@@ -62,10 +62,10 @@
   },
   "readme": "# `navigator-godef` [![Build Status](https://travis-ci.org/joefitzgerald/navigator-godef.svg?branch=master)](https://travis-ci.org/joefitzgerald/navigator-godef) [![Build status](https://ci.appveyor.com/api/projects/status/kkuftvp09beng3nm/branch/master?svg=true)](https://ci.appveyor.com/project/joefitzgerald/navigator-godef/branch/master)\n\n> **[godef](https://github.com/rogpeppe/godef)**\n>\n> Find symbol information in Go source. `godef`, given an expression or a\n> location in a source file, prints the location of the definition of the\n> symbol referred to.\n> Known limitations:\n>\n> - it does not understand about \".\" imports\n> - it does not like imports where the last element import path doesn't match\n> the package identifier.\n\n`navigator-godef` runs `godef` and jumps to the definition of the symbol under\nthe cursor, if it can be found. It depends on the following packages:\n\n* [`go-config`](https://atom.io/packages/go-config)\n* [`go-get`](https://atom.io/packages/go-get)\n\n## Contributors\n\nIn addition to https://github.com/joefitzgerald/navigator-godef/graphs/contributors, this package is based on work done by the following people for [go-plus](https://github.com/joefitzgerald/go-plus):\n\n* [Crispin Bennett](https://github.com/crispinb) [here](https://github.com/joefitzgerald/go-plus/pull/137)\n* [Darshan Shaligram](https://github.com/greensnark) [here](https://github.com/joefitzgerald/go-plus/pull/261) and [here](https://github.com/joefitzgerald/go-plus/pull/265)\n* [Matt Smith](https://github.com/ma314smith) [here](https://github.com/joefitzgerald/go-plus/pull/234) and  [here](https://github.com/joefitzgerald/go-plus/pull/239)\n* [Miguel Perez](https://github.com/miguel250) [here](https://github.com/joefitzgerald/go-plus/pull/227)\n",
   "readmeFilename": "README.md",
-  "_id": "navigator-godef@1.0.2",
-  "_shasum": "97f075fa9677953bc843fbc2b9a96c509e04864a",
-  "_resolved": "file:../d-116223-16211-4vr69i/package.tgz",
-  "_from": "../d-116223-16211-4vr69i/package.tgz",
+  "_id": "navigator-godef@1.0.3",
+  "_shasum": "207f0a42fff7c0b0fc2a3cfb1a13ebc3a8aa6cb1",
+  "_resolved": "file:../d-116322-17920-cdvb4f/package.tgz",
+  "_from": "../d-116322-17920-cdvb4f/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [

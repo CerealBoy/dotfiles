@@ -10,7 +10,7 @@
     "dependencies"
   ],
   "main": "./lib/main",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joefitzgerald/go-get.git"
@@ -64,10 +64,10 @@
   },
   "readme": "# `go-get` [![Build Status](https://travis-ci.org/joefitzgerald/go-get.svg?branch=master)](https://travis-ci.org/joefitzgerald/go-get) [![Build status](https://ci.appveyor.com/api/projects/status/qdu5k1n7a5cgm1hp?svg=true)](https://ci.appveyor.com/project/joefitzgerald/go-get)\n\nAn Atom package that uses the `go` tool to fetch and update dependencies. An Atom [`service`](https://atom.io/docs/latest/behind-atom-interacting-with-other-packages-via-services) is provided so that other packages can prompt a user to install a go library or tool.\n\n### Prerequisites\n\nThis package requires the following packages to be installed:\n\n* [`environment`](https://atom.io/packages/environment)\n* [`go-config`](https://atom.io/packages/go-config)\n",
   "readmeFilename": "README.md",
-  "_id": "go-get@1.0.2",
-  "_shasum": "940b886452a5e78454acf95489b7ee8251fb1fa6",
-  "_resolved": "file:../d-116225-16663-1nk8igm/package.tgz",
-  "_from": "../d-116225-16663-1nk8igm/package.tgz",
+  "_id": "go-get@1.0.3",
+  "_shasum": "be0ca8b767d1d076c2b9a88cdcf795d298c1c492",
+  "_resolved": "file:../d-116322-17888-fuggf2/package.tgz",
+  "_from": "../d-116322-17888-fuggf2/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
