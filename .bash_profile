@@ -10,7 +10,7 @@ fi
 xset led 3
 
 export GOPATH=/opt/go
-PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/home/y/bin:/home/y/bin64:~:/usr/local/go/bin:$GOPATH/bin:~/.composer/vendor/bin
+PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/home/y/bin:/home/y/bin64:~:/usr/local/go/bin:$GOPATH/bin:~/.composer/vendor/bin:/home/allan/e360/services/bin
 export PATH
 
 export GOROOT=$GOPATH
@@ -46,4 +46,12 @@ function gitu {
     BRANCH=${1:-master}
     BRANCH_TWO=${2:-master}
     git checkout "$BRANCH" && git fetch origin && git merge --ff-only origin/"$BRANCH_TWO"
+}
+
+# update and rebase
+function gitr {
+    ORIG_BRANCH="$(git status | awk 'NR==1' | awk '{split($$0,a); print a[3]}')"
+    gitu # update master from origin
+    git checkout "$ORIG_BRANCH" # move back to the original branch
+    git rebase master # pull in the commits from master to the branch
 }

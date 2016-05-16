@@ -11,15 +11,16 @@
     invisibles: {}
     preferredLineLength: 120
     showInvisibles: true
+    tabLength: 4
   "exception-reporting":
     userId: "cbf1b7ac-2c03-edd2-a857-60cf6142f0fe"
+  linter: {}
   "php-cs-fixer":
     executablePath: "/usr/local/bin/php-cs-fixer"
     executeOnSave: true
     showInfoNotifications: true
   "php-fmt": {}
-  "tree-view":
-    hideVcsIgnoredFiles: true
+  "tree-view": {}
   "vim-mode": {}
   welcome:
     showOnStartup: false
