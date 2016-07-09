@@ -1,6 +1,7 @@
 "*":
   core:
     excludeVcsIgnoredPaths: false
+    openEmptyEditorOnStart: false
     themes: [
       "dark-flat-ui"
       "outlander-syntax"
@@ -11,7 +12,6 @@
     invisibles: {}
     preferredLineLength: 120
     showInvisibles: true
-    tabLength: 4
   "exception-reporting":
     userId: "cbf1b7ac-2c03-edd2-a857-60cf6142f0fe"
   linter: {}

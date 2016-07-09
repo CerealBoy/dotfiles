@@ -53,5 +53,5 @@ function gitr {
     ORIG_BRANCH="$(git status | awk 'NR==1' | awk '{split($$0,a); print a[3]}')"
     gitu # update master from origin
     git checkout "$ORIG_BRANCH" # move back to the original branch
-    git rebase master # pull in the commits from master to the branch
+    git rebase -i master # pull in the commits from master to the branch
 }

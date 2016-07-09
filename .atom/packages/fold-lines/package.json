@@ -1,0 +1,44 @@
+{
+  "name": "fold-lines",
+  "main": "./lib/fold-lines",
+  "version": "0.2.0",
+  "description": "Display full-width fold lines, similar to Notepad++ or Komodo editors.",
+  "keywords": [
+    "fold",
+    "lines",
+    "Notepad++",
+    "Komodo"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alysov/fold-lines.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.3.0 <2.0.0"
+  },
+  "dependencies": {},
+  "readme": "# Fold Lines\n\nDisplay full-width fold lines, similar to Notepad++ or Komodo editors.\n\n![Underline all the folds!](http://i.imgur.com/eCu5VW4.gif)\n\nThe solution is rather simple, really: It adds a \"*folded*\" class to the editor, similar to how the\nline number is marked.  Therefore, to modify the style of the line marker, you could do something\nlike this in your styles.less file:\n\n```sass\natom-text-editor::shadow .line.folded {\n  border-bottom: 1px dashed salmon;  // Mmm.. salmon..\n}\n```\n\nTo remove underline from the line number marker:\n```sass\natom-text-editor::shadow .line-number.folded {\n  border-bottom: none;\n}\n```\n\nTo hide default fold marker (which I feel to be redundant while fold lines are visible):\n```sass\natom-text-editor::shadow .fold-marker {\n  display: none;\n}\n```\n\n### Goals / TODO:\n* [ ] Write specs\n* [ ] Config option to hide default fold marker\n* [ ] Fold lines in minimap.  Hmm&hellip;\n* [ ] Get mainline Atom to include this\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/alysov/fold-lines/issues"
+  },
+  "homepage": "https://github.com/alysov/fold-lines#readme",
+  "_id": "fold-lines@0.2.0",
+  "_shasum": "11cd9823bdecdb6e0e0e43ea45270fa0b2bdf4dc",
+  "_resolved": "file:../d-11663-14063-12aj1l6/package.tgz",
+  "_from": "../d-11663-14063-12aj1l6/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "lib/fold-lines.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}
