@@ -5,7 +5,8 @@ git submodule init && git submodule update --remote --recursive
 
 # use the apt direnv package
 sudo apt update
-sudo apt -y install direnv synapse
+sudo apt -y install direnv plank synapse
+sudo apt -y upgrade
 
 # install icdiff
 cd icdiff
