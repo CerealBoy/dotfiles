@@ -233,9 +233,8 @@
   's': 'vim-mode:substitute'
   '.': 'vim-mode:repeat'
 
-  # disabled to use search in atom effectively
-  # 'ctrl-]': 'symbols-view:go-to-declaration'
-  # 'ctrl-t': 'symbols-view:return-from-declaration'
+  'ctrl-]': 'symbols-view:go-to-declaration'
+  'ctrl-t': 'symbols-view:return-from-declaration'
 
   'ctrl-a': 'vim-mode:increase'
   'ctrl-x': 'vim-mode:decrease'

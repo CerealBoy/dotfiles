@@ -3,12 +3,9 @@
 # bring in any submodule updates
 git submodule init && git submodule update --remote --recursive
 
-# install direnv, probably need sudo...
-cd direnv
-make direnv
-sudo cp direnv /usr/local/bin/direnv
-sudo chmod a+x /usr/local/bin/direnv
-cd ..
+# use the apt direnv package
+sudo apt update
+sudo apt -y install direnv synapse
 
 # install icdiff
 cd icdiff
@@ -34,3 +31,4 @@ ln -s "$PWD/.atom" ~/.atom
 
 # use the profile pls
 . ~/.bash_profile
+

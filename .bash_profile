@@ -8,7 +8,9 @@ fi
 
 # can has keyboard lights
 xset led 3
+xbacklight -set 100
 
+export EDITOR=vim
 export GOPATH=/opt/go
 PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/home/y/bin:/home/y/bin64:~:/usr/local/go/bin:$GOPATH/bin:~/.composer/vendor/bin:/home/allan/e360/services/bin
 export PATH
@@ -55,3 +57,4 @@ function gitr {
     git checkout "$ORIG_BRANCH" # move back to the original branch
     git rebase -i master # pull in the commits from master to the branch
 }
+

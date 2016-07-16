@@ -1,7 +1,10 @@
 "*":
   core:
+    allowPendingPaneItems: false
+    autoHideMenuBar: true
     excludeVcsIgnoredPaths: false
     openEmptyEditorOnStart: false
+    projectHome: "/home/allan/e360"
     themes: [
       "dark-flat-ui"
       "outlander-syntax"

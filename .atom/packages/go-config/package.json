@@ -9,7 +9,7 @@
     "config"
   ],
   "main": "./lib/main",
-  "version": "1.1.4",
+  "version": "1.2.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joefitzgerald/go-config.git"
@@ -28,24 +28,19 @@
     "url": "https://github.com/joefitzgerald/go-config/issues"
   },
   "dependencies": {
-    "atom-package-deps": "4.0.1",
-    "fs-plus": "^2.8.1",
-    "lodash": "^4.6.1",
-    "os-homedir": "^1.0.1",
-    "semver": "^5.1.0"
+    "fs-plus": "^2.9.1",
+    "lodash": "^4.13.1",
+    "semver": "^5.2.0"
   },
   "devDependencies": {
-    "fs-extra": "^0.26.6",
-    "eslint": "^2.5.1",
-    "babel-eslint": "^6.0.0",
-    "eslint-config-standard": "^5.1.0",
+    "fs-extra": "^0.30.0",
+    "eslint": "v2.13.1",
+    "babel-eslint": "^6.1.0",
+    "eslint-config-standard": "^5.3.1",
     "eslint-plugin-standard": "^1.3.2",
-    "eslint-plugin-promise": "^1.1.0",
+    "eslint-plugin-promise": "^1.3.2",
     "temp": "^0.8.3"
   },
-  "package-deps": [
-    "environment"
-  ],
   "providedServices": {
     "go-config": {
       "versions": {
@@ -54,47 +49,33 @@
       }
     }
   },
-  "consumedServices": {
-    "environment": {
-      "versions": {
-        "0.1.0": "consumeEnvironment"
-      }
+  "configSchema": {
+    "gopath": {
+      "title": "GOPATH",
+      "description": "(Not Recommended For Use) If you have issues setting your GOPATH in your environment, you can use this to establish a fallback value. See https://github.com/joefitzgerald/go-config/wiki/GOPATH for more information.",
+      "type": "string",
+      "default": "",
+      "order": 1
     }
   },
-  "configSchema": {},
   "standard": {
     "globals": [
       "atom",
       "waitsForPromise"
     ]
   },
-  "readme": "# `go-config` For Atom [![Build Status](https://travis-ci.org/joefitzgerald/go-config.svg)](https://travis-ci.org/joefitzgerald/go-config) [![Build status](https://ci.appveyor.com/api/projects/status/sh7nepkf0cvt7r6j?svg=true)](https://ci.appveyor.com/project/joefitzgerald/go-config)\n\n`go-config` detects your go installation(s), tool(s), and associated configuration. You can optionally configure the package to provide hints for go installations tools.\n\nThis package provides an API via an Atom service. This API can be used by other packages that need to work with the `go` tool, other related tools (e.g. `gofmt`, `vet`, etc.) or `$GOPATH/bin` tools (e.g. `goimports`, `goreturns`, etc.).\n\nThis package needs the [environment](https://atom.io/packages/environment) package installed to function correctly in all circumstances. If [environment](https://atom.io/packages/environment) is not installed, you may experience issues on OS X on versions of Atom < 1.7.0. You can safely uninstall environment for versions of Atom >= 1.7.0.\n",
+  "readme": "# `go-config` For Atom [![Build Status](https://travis-ci.org/joefitzgerald/go-config.svg)](https://travis-ci.org/joefitzgerald/go-config) [![Build status](https://ci.appveyor.com/api/projects/status/sh7nepkf0cvt7r6j?svg=true)](https://ci.appveyor.com/project/joefitzgerald/go-config)\n\n`go-config` detects your go installation(s), tool(s), and associated configuration. You can optionally configure the package to provide hints for go installations tools.\n\nThis package provides an API via an Atom service. This API can be used by other packages that need to work with the `go` tool, other related tools (e.g. `gofmt`, `vet`, etc.) or `$GOPATH/bin` tools (e.g. `goimports`, `goreturns`, etc.).\n\n## Configuration\n\nYou can configure the GOPATH in the `go-config` package settings, however _it is not recommended_ to configure the package in this way. Please see https://github.com/joefitzgerald/go-config/wiki/GOPATH for further information.\n",
   "readmeFilename": "README.md",
-  "_id": "go-config@1.1.4",
-  "_shasum": "7714a976d234bfa492a1eaaea955ba1f26632321",
-  "_resolved": "file:../d-116322-17880-1arcf09/package.tgz",
-  "_from": "../d-116322-17880-1arcf09/package.tgz",
+  "_id": "go-config@1.2.1",
+  "_shasum": "54e54fae305f1a7d435d098a95ef30b6a33d9880",
+  "_resolved": "file:../d-116613-6993-535i0c/package.tgz",
+  "_from": "../d-116613-6993-535i0c/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
       {
-        "name": "atom-package-deps",
-        "version": "4.0.1",
-        "path": "node_modules/atom-package-deps/lib/index.js"
-      },
-      {
-        "name": "atom-package-path",
-        "version": "1.1.0",
-        "path": "node_modules/atom-package-deps/node_modules/atom-package-path/lib/index.js"
-      },
-      {
-        "name": "sb-callsite",
-        "version": "1.1.2",
-        "path": "node_modules/atom-package-deps/node_modules/atom-package-path/node_modules/sb-callsite/lib/main.js"
-      },
-      {
         "name": "fs-plus",
-        "version": "2.8.2",
+        "version": "2.9.1",
         "path": "node_modules/fs-plus/lib/fs-plus.js"
       },
       {
@@ -124,17 +105,12 @@
       },
       {
         "name": "lodash",
-        "version": "4.11.1",
+        "version": "4.13.1",
         "path": "node_modules/lodash/lodash.js"
       },
       {
-        "name": "os-homedir",
-        "version": "1.0.1",
-        "path": "node_modules/os-homedir/index.js"
-      },
-      {
         "name": "semver",
-        "version": "5.1.0",
+        "version": "5.2.0",
         "path": "node_modules/semver/semver.js"
       }
     ],
@@ -145,11 +121,6 @@
         "lib/locator.js",
         "lib/main.js",
         "lib/pathhelper.js",
-        "node_modules/atom-package-deps/lib/helpers.js",
-        "node_modules/atom-package-deps/lib/index.js",
-        "node_modules/atom-package-deps/lib/view.js",
-        "node_modules/atom-package-deps/node_modules/atom-package-path/lib/index.js",
-        "node_modules/atom-package-deps/node_modules/atom-package-path/node_modules/sb-callsite/lib/main.js",
         "node_modules/fs-plus/lib/fs-plus.js",
         "node_modules/fs-plus/node_modules/async/lib/async.js",
         "node_modules/fs-plus/node_modules/mkdirp/examples/pow.js",
@@ -162,6 +133,7 @@
         "node_modules/lodash/_DataView.js",
         "node_modules/lodash/_Hash.js",
         "node_modules/lodash/_LazyWrapper.js",
+        "node_modules/lodash/_ListCache.js",
         "node_modules/lodash/_LodashWrapper.js",
         "node_modules/lodash/_Map.js",
         "node_modules/lodash/_MapCache.js",
@@ -177,7 +149,6 @@
         "node_modules/lodash/_addSetEntry.js",
         "node_modules/lodash/_apply.js",
         "node_modules/lodash/_arrayAggregator.js",
-        "node_modules/lodash/_arrayConcat.js",
         "node_modules/lodash/_arrayEach.js",
         "node_modules/lodash/_arrayEachRight.js",
         "node_modules/lodash/_arrayEvery.js",
@@ -192,11 +163,7 @@
         "node_modules/lodash/_assignInDefaults.js",
         "node_modules/lodash/_assignMergeValue.js",
         "node_modules/lodash/_assignValue.js",
-        "node_modules/lodash/_assocDelete.js",
-        "node_modules/lodash/_assocGet.js",
-        "node_modules/lodash/_assocHas.js",
         "node_modules/lodash/_assocIndexOf.js",
-        "node_modules/lodash/_assocSet.js",
         "node_modules/lodash/_baseAggregator.js",
         "node_modules/lodash/_baseAssign.js",
         "node_modules/lodash/_baseAt.js",
@@ -212,8 +179,8 @@
         "node_modules/lodash/_baseExtremum.js",
         "node_modules/lodash/_baseFill.js",
         "node_modules/lodash/_baseFilter.js",
-        "node_modules/lodash/_baseFind.js",
         "node_modules/lodash/_baseFindIndex.js",
+        "node_modules/lodash/_baseFindKey.js",
         "node_modules/lodash/_baseFlatten.js",
         "node_modules/lodash/_baseFor.js",
         "node_modules/lodash/_baseForOwn.js",
@@ -222,6 +189,7 @@
         "node_modules/lodash/_baseFunctions.js",
         "node_modules/lodash/_baseGet.js",
         "node_modules/lodash/_baseGetAllKeys.js",
+        "node_modules/lodash/_baseGt.js",
         "node_modules/lodash/_baseHas.js",
         "node_modules/lodash/_baseHasIn.js",
         "node_modules/lodash/_baseInRange.js",
@@ -233,10 +201,12 @@
         "node_modules/lodash/_baseIsEqual.js",
         "node_modules/lodash/_baseIsEqualDeep.js",
         "node_modules/lodash/_baseIsMatch.js",
+        "node_modules/lodash/_baseIsNative.js",
         "node_modules/lodash/_baseIteratee.js",
         "node_modules/lodash/_baseKeys.js",
         "node_modules/lodash/_baseKeysIn.js",
         "node_modules/lodash/_baseLodash.js",
+        "node_modules/lodash/_baseLt.js",
         "node_modules/lodash/_baseMap.js",
         "node_modules/lodash/_baseMatches.js",
         "node_modules/lodash/_baseMatchesProperty.js",
@@ -263,10 +233,11 @@
         "node_modules/lodash/_baseSortedIndex.js",
         "node_modules/lodash/_baseSortedIndexBy.js",
         "node_modules/lodash/_baseSortedUniq.js",
-        "node_modules/lodash/_baseSortedUniqBy.js",
         "node_modules/lodash/_baseSum.js",
         "node_modules/lodash/_baseTimes.js",
+        "node_modules/lodash/_baseToNumber.js",
         "node_modules/lodash/_baseToPairs.js",
+        "node_modules/lodash/_baseToString.js",
         "node_modules/lodash/_baseUnary.js",
         "node_modules/lodash/_baseUniq.js",
         "node_modules/lodash/_baseUnset.js",
@@ -277,7 +248,6 @@
         "node_modules/lodash/_baseXor.js",
         "node_modules/lodash/_baseZipObject.js",
         "node_modules/lodash/_cacheHas.js",
-        "node_modules/lodash/_cachePush.js",
         "node_modules/lodash/_castArrayLikeObject.js",
         "node_modules/lodash/_castFunction.js",
         "node_modules/lodash/_castPath.js",
@@ -300,6 +270,7 @@
         "node_modules/lodash/_copyArray.js",
         "node_modules/lodash/_copyObject.js",
         "node_modules/lodash/_copySymbols.js",
+        "node_modules/lodash/_coreJsData.js",
         "node_modules/lodash/_countHolders.js",
         "node_modules/lodash/_createAggregator.js",
         "node_modules/lodash/_createAssigner.js",
@@ -310,6 +281,7 @@
         "node_modules/lodash/_createCompounder.js",
         "node_modules/lodash/_createCtorWrapper.js",
         "node_modules/lodash/_createCurryWrapper.js",
+        "node_modules/lodash/_createFind.js",
         "node_modules/lodash/_createFlow.js",
         "node_modules/lodash/_createHybridWrapper.js",
         "node_modules/lodash/_createInverter.js",
@@ -319,8 +291,10 @@
         "node_modules/lodash/_createPartialWrapper.js",
         "node_modules/lodash/_createRange.js",
         "node_modules/lodash/_createRecurryWrapper.js",
+        "node_modules/lodash/_createRelationalOperation.js",
         "node_modules/lodash/_createRound.js",
         "node_modules/lodash/_createSet.js",
+        "node_modules/lodash/_createToPairs.js",
         "node_modules/lodash/_createWrapper.js",
         "node_modules/lodash/_deburrLetter.js",
         "node_modules/lodash/_equalArrays.js",
@@ -332,16 +306,19 @@
         "node_modules/lodash/_getAllKeysIn.js",
         "node_modules/lodash/_getData.js",
         "node_modules/lodash/_getFuncName.js",
+        "node_modules/lodash/_getHolder.js",
         "node_modules/lodash/_getLength.js",
+        "node_modules/lodash/_getMapData.js",
         "node_modules/lodash/_getMatchData.js",
         "node_modules/lodash/_getNative.js",
-        "node_modules/lodash/_getPlaceholder.js",
         "node_modules/lodash/_getPrototype.js",
         "node_modules/lodash/_getSymbols.js",
         "node_modules/lodash/_getSymbolsIn.js",
         "node_modules/lodash/_getTag.js",
+        "node_modules/lodash/_getValue.js",
         "node_modules/lodash/_getView.js",
         "node_modules/lodash/_hasPath.js",
+        "node_modules/lodash/_hashClear.js",
         "node_modules/lodash/_hashDelete.js",
         "node_modules/lodash/_hashGet.js",
         "node_modules/lodash/_hashHas.js",
@@ -359,17 +336,24 @@
         "node_modules/lodash/_isKey.js",
         "node_modules/lodash/_isKeyable.js",
         "node_modules/lodash/_isLaziable.js",
+        "node_modules/lodash/_isMaskable.js",
+        "node_modules/lodash/_isMasked.js",
         "node_modules/lodash/_isPrototype.js",
         "node_modules/lodash/_isStrictComparable.js",
         "node_modules/lodash/_iteratorToArray.js",
         "node_modules/lodash/_lazyClone.js",
         "node_modules/lodash/_lazyReverse.js",
         "node_modules/lodash/_lazyValue.js",
-        "node_modules/lodash/_mapClear.js",
-        "node_modules/lodash/_mapDelete.js",
-        "node_modules/lodash/_mapGet.js",
-        "node_modules/lodash/_mapHas.js",
-        "node_modules/lodash/_mapSet.js",
+        "node_modules/lodash/_listCacheClear.js",
+        "node_modules/lodash/_listCacheDelete.js",
+        "node_modules/lodash/_listCacheGet.js",
+        "node_modules/lodash/_listCacheHas.js",
+        "node_modules/lodash/_listCacheSet.js",
+        "node_modules/lodash/_mapCacheClear.js",
+        "node_modules/lodash/_mapCacheDelete.js",
+        "node_modules/lodash/_mapCacheGet.js",
+        "node_modules/lodash/_mapCacheHas.js",
+        "node_modules/lodash/_mapCacheSet.js",
         "node_modules/lodash/_mapToArray.js",
         "node_modules/lodash/_matchesStrictComparable.js",
         "node_modules/lodash/_mergeData.js",
@@ -385,8 +369,11 @@
         "node_modules/lodash/_reorder.js",
         "node_modules/lodash/_replaceHolders.js",
         "node_modules/lodash/_root.js",
+        "node_modules/lodash/_setCacheAdd.js",
+        "node_modules/lodash/_setCacheHas.js",
         "node_modules/lodash/_setData.js",
         "node_modules/lodash/_setToArray.js",
+        "node_modules/lodash/_setToPairs.js",
         "node_modules/lodash/_stackClear.js",
         "node_modules/lodash/_stackDelete.js",
         "node_modules/lodash/_stackGet.js",
@@ -471,6 +458,7 @@
         "node_modules/lodash/findLast.js",
         "node_modules/lodash/findLastIndex.js",
         "node_modules/lodash/findLastKey.js",
+        "node_modules/lodash/first.js",
         "node_modules/lodash/flatMap.js",
         "node_modules/lodash/flatMapDeep.js",
         "node_modules/lodash/flatMapDepth.js",
@@ -575,10 +563,14 @@
         "node_modules/lodash/fp/fill.js",
         "node_modules/lodash/fp/filter.js",
         "node_modules/lodash/fp/find.js",
+        "node_modules/lodash/fp/findFrom.js",
         "node_modules/lodash/fp/findIndex.js",
+        "node_modules/lodash/fp/findIndexFrom.js",
         "node_modules/lodash/fp/findKey.js",
         "node_modules/lodash/fp/findLast.js",
+        "node_modules/lodash/fp/findLastFrom.js",
         "node_modules/lodash/fp/findLastIndex.js",
+        "node_modules/lodash/fp/findLastIndexFrom.js",
         "node_modules/lodash/fp/findLastKey.js",
         "node_modules/lodash/fp/first.js",
         "node_modules/lodash/fp/flatMap.js",
@@ -613,7 +605,9 @@
         "node_modules/lodash/fp/identity.js",
         "node_modules/lodash/fp/inRange.js",
         "node_modules/lodash/fp/includes.js",
+        "node_modules/lodash/fp/includesFrom.js",
         "node_modules/lodash/fp/indexOf.js",
+        "node_modules/lodash/fp/indexOfFrom.js",
         "node_modules/lodash/fp/init.js",
         "node_modules/lodash/fp/initial.js",
         "node_modules/lodash/fp/intersection.js",
@@ -673,6 +667,7 @@
         "node_modules/lodash/fp/lang.js",
         "node_modules/lodash/fp/last.js",
         "node_modules/lodash/fp/lastIndexOf.js",
+        "node_modules/lodash/fp/lastIndexOfFrom.js",
         "node_modules/lodash/fp/lowerCase.js",
         "node_modules/lodash/fp/lowerFirst.js",
         "node_modules/lodash/fp/lt.js",
@@ -786,6 +781,11 @@
         "node_modules/lodash/fp/startCase.js",
         "node_modules/lodash/fp/startsWith.js",
         "node_modules/lodash/fp/string.js",
+        "node_modules/lodash/fp/stubArray.js",
+        "node_modules/lodash/fp/stubFalse.js",
+        "node_modules/lodash/fp/stubObject.js",
+        "node_modules/lodash/fp/stubString.js",
+        "node_modules/lodash/fp/stubTrue.js",
         "node_modules/lodash/fp/subtract.js",
         "node_modules/lodash/fp/sum.js",
         "node_modules/lodash/fp/sumBy.js",
@@ -801,6 +801,7 @@
         "node_modules/lodash/fp/thru.js",
         "node_modules/lodash/fp/times.js",
         "node_modules/lodash/fp/toArray.js",
+        "node_modules/lodash/fp/toFinite.js",
         "node_modules/lodash/fp/toInteger.js",
         "node_modules/lodash/fp/toIterator.js",
         "node_modules/lodash/fp/toJSON.js",
@@ -1030,6 +1031,11 @@
         "node_modules/lodash/startCase.js",
         "node_modules/lodash/startsWith.js",
         "node_modules/lodash/string.js",
+        "node_modules/lodash/stubArray.js",
+        "node_modules/lodash/stubFalse.js",
+        "node_modules/lodash/stubObject.js",
+        "node_modules/lodash/stubString.js",
+        "node_modules/lodash/stubTrue.js",
         "node_modules/lodash/subtract.js",
         "node_modules/lodash/sum.js",
         "node_modules/lodash/sumBy.js",
@@ -1045,6 +1051,7 @@
         "node_modules/lodash/thru.js",
         "node_modules/lodash/times.js",
         "node_modules/lodash/toArray.js",
+        "node_modules/lodash/toFinite.js",
         "node_modules/lodash/toInteger.js",
         "node_modules/lodash/toIterator.js",
         "node_modules/lodash/toJSON.js",
@@ -1099,13 +1106,9 @@
         "node_modules/lodash/zipObject.js",
         "node_modules/lodash/zipObjectDeep.js",
         "node_modules/lodash/zipWith.js",
-        "node_modules/os-homedir/index.js",
         "node_modules/semver/semver.js"
       ],
       ".json": [
-        "node_modules/atom-package-deps/node_modules/atom-package-path/node_modules/sb-callsite/package.json",
-        "node_modules/atom-package-deps/node_modules/atom-package-path/package.json",
-        "node_modules/atom-package-deps/package.json",
         "node_modules/fs-plus/node_modules/async/component.json",
         "node_modules/fs-plus/node_modules/async/package.json",
         "node_modules/fs-plus/node_modules/mkdirp/package.json",
@@ -1114,7 +1117,6 @@
         "node_modules/fs-plus/node_modules/underscore-plus/package.json",
         "node_modules/fs-plus/package.json",
         "node_modules/lodash/package.json",
-        "node_modules/os-homedir/package.json",
         "node_modules/semver/package.json",
         "package.json"
       ]
@@ -1128,30 +1130,9 @@
           "spec/fixtures"
         ],
         "dependencies": {
-          "atom-package-deps": "4.0.1",
-          "fs-plus": "^2.8.1",
-          "lodash": "^4.6.1",
-          "os-homedir": "^1.0.1",
-          "semver": "^5.1.0"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/atom-package-deps/lib",
-          "node_modules/atom-package-deps"
-        ],
-        "dependencies": {
-          "atom-package-path": "^1.1.0"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/atom-package-deps/node_modules/atom-package-path/lib",
-          "node_modules/atom-package-deps/node_modules/atom-package-path",
-          "node_modules/atom-package-deps/node_modules/atom-package-path/spec"
-        ],
-        "dependencies": {
-          "sb-callsite": "^1.1.2"
+          "fs-plus": "^2.9.1",
+          "lodash": "^4.13.1",
+          "semver": "^5.2.0"
         }
       },
       {

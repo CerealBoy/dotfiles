@@ -1,7 +1,7 @@
 {
   "name": "ex-mode",
   "main": "./lib/ex-mode",
-  "version": "0.8.0",
+  "version": "0.10.0",
   "description": "Ex for Atom's vim-mode",
   "activationCommands": {
     "atom-workspace": "ex-mode:open"
@@ -39,16 +39,16 @@
   "devDependencies": {
     "node-uuid": "^1.4.2"
   },
-  "readme": "# ex-mode package\n\nex-mode for Atom's vim-mode\n\n## Use\n\nInstall both [vim-mode](https://github.com/atom/vim-mode) and ex-mode. Type `:` in command mode. Enter `w` or `write`.\n\n## Extend\n\nUse the service to register commands, from your own package, or straight from `init.coffee`:\n\n```coffee\n# in Atom's init.coffee\natom.packages.onDidActivatePackage (pack) ->\n  if pack.name == 'ex-mode'\n    Ex = pack.mainModule.provideEx()\n    Ex.registerCommand 'z', -> console.log(\"Zzzzzz...\")\n    # Register an alias - Now :W acts like :w\n    Ex.registerAlias 'W', 'w'\n```\n\nSee `lib/ex.coffee` for some examples commands. Contributions are very welcome!\n\n## Status\n\nGroundwork is done. More ex commands are easy to add and will be coming as time permits and contributions come in.\n\n## License\n\nMIT\n",
+  "readme": "# ex-mode package\n\nex-mode for Atom's vim-mode\n\n## Use\n\nInstall both [vim-mode](https://github.com/atom/vim-mode) and ex-mode. Type `:` in command mode. Enter `w` or `write`.\n\n## Extend\n\nUse the service to register commands, from your own package, or straight from `init.coffee`:\n\n```coffee\n# in Atom's init.coffee\natom.packages.onDidActivatePackage (pack) ->\n  if pack.name == 'ex-mode'\n    Ex = pack.mainModule.provideEx()\n    Ex.registerCommand 'z', -> console.log(\"Zzzzzz...\")\n```\n\nYou can also add aliases:\n\n```coffee\natom.packages.onDidActivatePackage (pack) ->\n  if pack.name == 'ex-mode'\n    Ex = pack.mainModule.provideEx()\n    Ex.registerAlias 'WQ', 'wq'\n    Ex.registerAlias 'Wq', 'wq'\n```\n\nSee `lib/ex.coffee` for some examples commands. Contributions are very welcome!\n\n## Status\n\nGroundwork is done. More ex commands are easy to add and will be coming as time permits and contributions come in.\n\n## License\n\nMIT\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/lloeki/ex-mode/issues"
   },
   "homepage": "https://github.com/lloeki/ex-mode#readme",
-  "_id": "ex-mode@0.8.0",
-  "_shasum": "bc82de3d741c715bf8958704cc5606369743134f",
-  "_resolved": "file:../d-116210-23859-66qfba/package.tgz",
-  "_from": "../d-116210-23859-66qfba/package.tgz",
+  "_id": "ex-mode@0.10.0",
+  "_shasum": "317209753b6d50306e3158a6075ef6c6dee59eaf",
+  "_resolved": "file:../d-116613-6985-16zniq6/package.tgz",
+  "_from": "../d-116613-6985-16zniq6/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -89,7 +89,7 @@
       },
       {
         "name": "es5-ext",
-        "version": "0.10.11",
+        "version": "0.10.12",
         "path": "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/es6-weak-map/node_modules/es5-ext/index.js"
       },
       {
@@ -99,7 +99,7 @@
       },
       {
         "name": "es6-symbol",
-        "version": "3.0.2",
+        "version": "3.1.0",
         "path": "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/es6-weak-map/node_modules/es5-ext/node_modules/es6-symbol/index.js"
       },
       {
@@ -124,7 +124,7 @@
       },
       {
         "name": "fs-plus",
-        "version": "2.8.1",
+        "version": "2.9.1",
         "path": "node_modules/fs-plus/lib/fs-plus.js"
       },
       {
@@ -169,7 +169,7 @@
       },
       {
         "name": "es5-ext",
-        "version": "0.10.11",
+        "version": "0.10.12",
         "path": "node_modules/space-pen/node_modules/grim/node_modules/emissary/node_modules/es6-weak-map/node_modules/es5-ext/index.js"
       },
       {
@@ -179,7 +179,7 @@
       },
       {
         "name": "es6-symbol",
-        "version": "3.0.2",
+        "version": "3.1.0",
         "path": "node_modules/space-pen/node_modules/grim/node_modules/emissary/node_modules/es6-weak-map/node_modules/es5-ext/node_modules/es6-symbol/index.js"
       },
       {
@@ -1480,7 +1480,7 @@
         ],
         "dependencies": {
           "es6-iterator": "2",
-          "es6-symbol": "~3.0.2"
+          "es6-symbol": "~3.1"
         }
       },
       {
@@ -1503,7 +1503,7 @@
         ],
         "dependencies": {
           "d": "~0.1.1",
-          "es5-ext": "~0.10.10"
+          "es5-ext": "~0.10.11"
         }
       },
       {
@@ -1761,7 +1761,7 @@
         ],
         "dependencies": {
           "es6-iterator": "2",
-          "es6-symbol": "~3.0.2"
+          "es6-symbol": "~3.1"
         }
       },
       {
@@ -1784,7 +1784,7 @@
         ],
         "dependencies": {
           "d": "~0.1.1",
-          "es5-ext": "~0.10.10"
+          "es5-ext": "~0.10.11"
         }
       },
       {
