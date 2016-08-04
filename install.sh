@@ -37,8 +37,8 @@ ln -s "$PWD/.screenrc" ~/.screenrc
 . ~/.bash_profile
 
 # bring in atom
-#wget https://atom.io/download/deb
-#sudo dpkg -i ./atom-amd64.deb
+wget https://atom.io/download/deb
+sudo dpkg -i ./atom-amd64.deb
 
 # grab the latest golang
 GO_PKG="go1.6.2.linux-amd64.tar.gz"
@@ -48,4 +48,7 @@ sudo tar -xzf $GO_PKG -C /opt
 # install some golang tools
 go get -u golang.org/x/tools/cmd/goimports
 go get -u github.com/alecthomas/gometalinter
+go get -u github.com/axw/gocov/gocov
+go get -u gopkg.in/matm/v1/gocov-html
+go get -u github.com/kardianos/govendor
 
