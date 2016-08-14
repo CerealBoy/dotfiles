@@ -1,0 +1,19 @@
+#!/bin/bash
+
+TMPBG=/tmp/screen.png
+scrot $TMPBG
+
+BLURTYPE="8x8"
+convert $TMPBG -blur $BLURTYPE -adaptive-blur "2x5" $TMPBG
+
+# /usr/share/xfce4/backdrops/Untitled_by_Aaron_Burden.png
+
+# ICON=somethingsomething.png
+# convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
+
+i3lock -i $TMPBG \
+    -f \
+    -c 353535 \
+    -e \
+    -t
+

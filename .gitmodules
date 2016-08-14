@@ -70,6 +70,3 @@
 [submodule ".vim/bundle/Dockerfile.vim"]
 	path = .vim/bundle/Dockerfile.vim
 	url = git@github.com:ekalinin/Dockerfile.vim.git
-[submodule "icdiff"]
-	path = icdiff
-	url = git@github.com:jeffkaufman/icdiff.git

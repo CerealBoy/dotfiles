@@ -1,26 +1,31 @@
 #!/bin/bash
 
-# bring in any submodule updates
-git submodule init && git submodule update --remote --recursive
+WHOAMI=$(whoami)
 
 # get some more packages in here
 echo "deb http://repo.pritunl.com/stable/apt xenial main" | sudo tee /etc/apt/sources.list.d/pritunl.list > /dev/null
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv CF8E292A
 
+# grab and install icdiff
+curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.8.1/icdiff | \
+    sudo tee /usr/local/bin/icdiff > /dev/null && \
+    sudo chmod a+rx /usr/local/bin/icdiff
+curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.8.1/git-icdiff | \
+    sudo tee /usr/local/bin/git-icdiff > /dev/null && \
+    sudo chmod a+rx /usr/local/bin/git-icdiff
+
+# spotify
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+
 # use the apt direnv package
 sudo apt update
-sudo apt -y install direnv plank pritunl-client-gtk synapse
+sudo apt -y install direnv i3lock ocaml opam plank pritunl-client-gtk rofi scrot spotify-client
 sudo apt -y upgrade
-
-# install icdiff
-cd icdiff
-sudo cp *cdiff /usr/local/bin/
-sudo chmod a+x /usr/local/bin/*cdiff
-cd ..
 
 # remove the old files
 if [ -f ~/.vim && -f ~/.gitconfig ]; then
-	rm ~/.vim ~/.vimrc ~/.bashrc ~/.bash_profile ~/.inputrc ~/.gitconfig ~/.profile ~/.screenrc;
+	rm ~/.vim ~/.vimrc ~/.bashrc ~/.bash_profile ~/.inputrc ~/.gitconfig ~/.profile ~/.screenrc ~/.xinitrc;
 fi
 
 # symlink them in
@@ -32,6 +37,10 @@ ln -s "$PWD/.inputrc" ~/.inputrc
 ln -s "$PWD/.gitconfig" ~/.gitconfig
 ln -s "$PWD/.profile" ~/.profile
 ln -s "$PWD/.screenrc" ~/.screenrc
+ln -s "$PWD/.xinitrc" ~/.xinitrc
+
+# config is a little different
+cp -r "$PWD/.config" ~/.config
 
 # use the profile pls
 . ~/.bash_profile
@@ -40,8 +49,18 @@ ln -s "$PWD/.screenrc" ~/.screenrc
 wget https://atom.io/download/deb
 sudo dpkg -i ./atom-amd64.deb
 
+# lock-screen pls
+sudo cp "$PWD/slock" /usr/bin/slock
+sudo chown $(WHOAMI):$(WHOAMI) /usr/bin/slock
+chmod a+x /usr/bin/slock
+
+# rofi runner also
+sudo cp "$PWD/rofi" /usr/local/bin/rofi
+sudo chown $(WHOAMI):$(WHOAMI) /usr/local/bin/rofi
+chmod a+x /usr/local/bin/rofi
+
 # grab the latest golang
-GO_PKG="go1.6.2.linux-amd64.tar.gz"
+GO_PKG="go1.6.3.linux-amd64.tar.gz"
 wget https://storage.googleapis.com/golang/$GO_PKG
 sudo tar -xzf $GO_PKG -C /opt
 
@@ -51,4 +70,7 @@ go get -u github.com/alecthomas/gometalinter
 go get -u github.com/axw/gocov/gocov
 go get -u gopkg.in/matm/v1/gocov-html
 go get -u github.com/kardianos/govendor
+
+# spotify-cli
+opam install spotify-cli
 
