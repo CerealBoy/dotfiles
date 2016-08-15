@@ -12,7 +12,7 @@ xbacklight -set 100
 
 export EDITOR=vim
 export GOPATH=/opt/go
-PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/home/y/bin:/home/y/bin64:~:/usr/local/go/bin:$GOPATH/bin:~/.composer/vendor/bin:/home/allan/e360/services/bin
+PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/home/y/bin:/home/y/bin64:~:/usr/local/go/bin:$GOPATH/bin:~/.composer/vendor/bin:/home/allan/e360/services/bin:/home/allan/.opam/system/bin
 export PATH
 
 export GOROOT=$GOPATH
@@ -36,6 +36,9 @@ alias ic="git-icdiff"
 
 # run direnv setup
 eval "$(direnv hook bash)"
+
+# opam configuration
+. /home/allan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 #function dock-php() {
 #  DIR=$(readlink -f $(pwd))

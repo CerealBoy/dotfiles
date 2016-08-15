@@ -1,3 +1,21 @@
 #!/bin/bash
 
-rofi -config ~/.config/rofi/conf/rofi.conf
+/usr/bin/rofi -show run \
+    -auto-select true \
+    -bw 5 \
+    -color-enabled true \
+    -color-window "argb:ee222222, #79a4e5, #79a4e5" \
+    -color-normal "argb:0000000, #79a4e5, argb:0000000, #79a4e5, #1b2b34" \
+    -color-active "argb:0000000, #6699cc, argb:0000000, #6699cc, #1b2b34" \
+    -color-urgent "argb:0000000, #79a4e5, argb:0000000, #79a4e5, #1b2b34" \
+    -font "Noto Sans 12" \
+    -hide-scrollbar true \
+    -line-margin 3 \
+    -lines 20 \
+    -location 0 \
+    -modi "run,ssh" \
+    -opacity 85 \
+    -padding 3 \
+    -separator-style "none" \
+    -width 75
+

@@ -23,9 +23,12 @@ sudo apt update
 sudo apt -y install direnv i3lock ocaml opam plank pritunl-client-gtk rofi scrot spotify-client
 sudo apt -y upgrade
 
+# init opam
+opam init -n
+
 # remove the old files
-if [ -f ~/.vim && -f ~/.gitconfig ]; then
-	rm ~/.vim ~/.vimrc ~/.bashrc ~/.bash_profile ~/.inputrc ~/.gitconfig ~/.profile ~/.screenrc ~/.xinitrc;
+if [ -f ~/.vim -a -f ~/.gitconfig ]; then
+	rm ~/.vim ~/.vimrc ~/.bashrc ~/.bash_profile ~/.inputrc ~/.gitconfig ~/.profile ~/.screenrc;
 fi
 
 # symlink them in
@@ -37,7 +40,6 @@ ln -s "$PWD/.inputrc" ~/.inputrc
 ln -s "$PWD/.gitconfig" ~/.gitconfig
 ln -s "$PWD/.profile" ~/.profile
 ln -s "$PWD/.screenrc" ~/.screenrc
-ln -s "$PWD/.xinitrc" ~/.xinitrc
 
 # config is a little different
 cp -r "$PWD/.config" ~/.config
@@ -47,7 +49,7 @@ cp -r "$PWD/.config" ~/.config
 
 # bring in atom
 wget https://atom.io/download/deb
-sudo dpkg -i ./atom-amd64.deb
+sudo dpkg -i ./deb
 
 # lock-screen pls
 sudo cp "$PWD/slock" /usr/bin/slock
@@ -56,8 +58,7 @@ chmod a+x /usr/bin/slock
 
 # rofi runner also
 sudo cp "$PWD/rofi" /usr/local/bin/rofi
-sudo chown $(WHOAMI):$(WHOAMI) /usr/local/bin/rofi
-chmod a+x /usr/local/bin/rofi
+sudo chmod a+x /usr/local/bin/rofi
 
 # grab the latest golang
 GO_PKG="go1.6.3.linux-amd64.tar.gz"
@@ -72,5 +73,5 @@ go get -u gopkg.in/matm/v1/gocov-html
 go get -u github.com/kardianos/govendor
 
 # spotify-cli
-opam install spotify-cli
+opam install spotify-cli -y
 
