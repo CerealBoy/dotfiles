@@ -61,7 +61,7 @@ sudo cp "$PWD/rofi" /usr/local/bin/rofi
 sudo chmod a+x /usr/local/bin/rofi
 
 # grab the latest golang
-GO_PKG="go1.6.3.linux-amd64.tar.gz"
+GO_PKG="go1.7.linux-amd64.tar.gz"
 wget https://storage.googleapis.com/golang/$GO_PKG
 sudo tar -xzf $GO_PKG -C /opt
 
