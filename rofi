@@ -1,7 +1,6 @@
 #!/bin/bash
 
 /usr/bin/rofi -show run \
-    -auto-select true \
     -bw 5 \
     -color-enabled true \
     -color-window "argb:ee222222, #79a4e5, #79a4e5" \

@@ -5,7 +5,7 @@ endif
 
 syntax on
 
-colorscheme molokai
+colorscheme wombat
 
 set autochdir
 set backspace=indent,eol,start

@@ -48,8 +48,8 @@ cp -r "$PWD/.config" ~/.config
 . ~/.bash_profile
 
 # bring in atom
-wget https://atom.io/download/deb
-sudo dpkg -i ./deb
+wget -O ./atom.deb https://atom.io/download/deb
+sudo dpkg -i ./atom.deb
 
 # lock-screen pls
 sudo cp "$PWD/slock" /usr/bin/slock
