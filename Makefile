@@ -1,7 +1,7 @@
 PWD=`pwd`
 SLOCK="/usr/local/bin/slock"
 ROFI="/usr/local/bin/rofi"
-GOPKG="go1.7.linux-amd64.tar.gz"
+GOPKG="go1.7.3.linux-amd64.tar.gz"
 
 all: packages configs
 	reset
@@ -21,7 +21,7 @@ sources:
 
 debs:
 	sudo apt update
-	sudo apt -y install direnv i3lock ocaml opam plank pritunl-client-gtk rofi scrot spotify-client
+	sudo apt -y install cowsay direnv fortune i3lock ocaml opam plank pritunl-client-gtk rofi scrot spotify-client
 	sudo apt -y upgrade
 
 curls: icdiff atom go opam
@@ -36,7 +36,13 @@ icdiff:
 
 atom:
 	wget -O ./atom.deb https://atom.io/download/deb && \
-		sudo dpkg -i ./atom.deb
+		sudo dpkg -i ./atom.deb && \
+		rm ./atom.deb
+
+sublime:
+	wget -O ./sublime.deb https://download.sublimetext.com/sublime-text_build-3126_amd64.deb && \
+		sudo dpkg -i ./sublime.deb && \
+		rm ./sublime.deb
 
 go: go-pkg go-deps
 
@@ -45,11 +51,15 @@ go-pkg:
 	sudo tar -xzf $(GOPKG) -C /opt
 
 go-deps:
-	go get -u golang.org/x/tools/cmd/goimports
-	go get -u github.com/alecthomas/gometalinter
+	go get -u github.com/nsf/gocode
 	go get -u github.com/axw/gocov/gocov
 	go get -u gopkg.in/matm/v1/gocov-html
+	go get -u github.com/zmb3/gogetdoc
+	go get -u golang.org/x/tools/cmd/goimports
+	go get -u gopkg.in/alecthomas/gometalinter.v1
+	go get -u sourcegraph.com/sqs/goreturns
 	go get -u github.com/kardianos/govendor
+	go get -u github.com/mvdan/interfacer/cmd/interfacer
 
 opam:
 	opam init -n
