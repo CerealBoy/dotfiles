@@ -39,10 +39,17 @@ icdiff:
     	sudo tee /usr/local/bin/git-icdiff > /dev/null && \
     	sudo chmod a+rx /usr/local/bin/git-icdiff
 
-atom:
+atom: atom-pkg
+
+atom-pkg:
 	wget -O ./atom.deb https://atom.io/download/deb && \
 		sudo dpkg -i ./atom.deb && \
 		rm ./atom.deb
+
+atom-deps:
+	apm install autocomplete-elixir go-debug go-plus gtk-dark-theme language-docker language-elixir \
+		language-javascript-jsx linter linter-elixirc monokai vim-mode-plus vim-mode-plus-ex-mode
+	apm install seti-ui monokai wombat-dark-syntax
 
 go: go-pkg go-deps
 
