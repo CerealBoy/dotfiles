@@ -70,3 +70,9 @@
 [submodule ".vim/bundle/Dockerfile.vim"]
 	path = .vim/bundle/Dockerfile.vim
 	url = git@github.com:ekalinin/Dockerfile.vim.git
+[submodule "powerline/fonts"]
+	path = powerline/fonts
+	url = git@github.com:powerline/fonts.git
+[submodule "powerline/shell"]
+	path = powerline/shell
+	url = git@github.com:banga/powerline-shell.git

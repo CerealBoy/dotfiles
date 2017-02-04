@@ -19,8 +19,13 @@ export GOPATH=~/go/
 
 export CLICOLOR=1
 export TERM=xterm-256color
-export gnarleyHostName=`hostname | cut -d\.  -f1`
-export PS1="\[\e[01;35m\]\u\[\e[0m\]\[\e[01;37m\]@\h\[\e[0m\]\[\e[00;37m\]:\w \[\e[0m\]\[\e[00;36m\]$?\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[01;37m\]\n$\[\e[0m\]\[\e[00;37m\] \[\e[0m\]"
+
+function _update_ps1() {
+    PS1="$(~/.powerline.py $? 2> /dev/null)"
+}
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
 
 alias la="ls -la --color=auto"
 alias lg="ls -gahS --color=auto"

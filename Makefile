@@ -1,7 +1,7 @@
 PWD=`pwd`
 SLOCK="/usr/local/bin/slock"
 ROFI="/usr/local/bin/rofi"
-GOPKG="go1.7.3.linux-amd64.tar.gz"
+GOPKG="go1.7.4.linux-amd64.tar.gz"
 
 all: packages configs
 	reset
@@ -9,7 +9,7 @@ all: packages configs
 submodules:
 	git submodule update --remote --recursive
 
-packages: keys sources debs curls
+packages: keys sources debs powerline curls
 
 keys:
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv CF8E292A
@@ -26,6 +26,11 @@ debs:
 
 curls: icdiff atom go opam
 
+powerline:
+	cd powerline/fonts && ./install.sh && cd ../..
+	cd powerline/shell && ./install.py && cd ../..
+	ln -s $(PWD)/powerline/shell/powerline-shell.py ~/.powerline.py
+
 icdiff:
 	curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.8.1/icdiff | \
     	sudo tee /usr/local/bin/icdiff > /dev/null && \
@@ -38,11 +43,6 @@ atom:
 	wget -O ./atom.deb https://atom.io/download/deb && \
 		sudo dpkg -i ./atom.deb && \
 		rm ./atom.deb
-
-sublime:
-	wget -O ./sublime.deb https://download.sublimetext.com/sublime-text_build-3126_amd64.deb && \
-		sudo dpkg -i ./sublime.deb && \
-		rm ./sublime.deb
 
 go: go-pkg go-deps
 
@@ -91,3 +91,4 @@ rofi:
 		sudo rm "$(ROFI)"; \
 	fi && sudo ln -s "$(PWD)/rofi" "$(ROFI)"
 
+.PHONY: powerline
