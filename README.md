@@ -10,8 +10,34 @@ to *vi*, such flexibility!
 The *vim* plugins are embedded as git submodules, these can be recursively updated in the usual method. Move into
 the root folder of this repository, and run:
 
-    git submodule update --remote --recursive
+    make submodules
 
 ## installation
-The included *install.sh* script will complete installation. Beware however, it will delete any existing files in
-the paths of the included files.
+A comprehensive make target is available to complete all tasks. This includes adding repositories, installing packages
+via apt, setting up config files, downloading tarballs, and any other appropriate installations.
+
+    make all
+
+### targets
+* ``make packages`` will bring in all packages from all sources
+  * ``make go`` will install go and general tools used
+  * ``make atom`` will install atom and bring in requirements for configurations used
+  * ``make powerline`` will grab powerline for pretty shell display
+  * ``make icdiff`` retrieves and enables icdiff
+  * ``make opam`` installs opam and the spotify-cli client
+  * ``make keys sources debs`` installs apt packages, for the following
+    * cowsay
+    * direnv
+    * fortune
+    * i3lock
+    * ocaml
+    * opam
+    * plank
+    * pritunl-client-gtk
+    * rofi
+    * scrot
+    * spotify-client
+  * ``make rofi`` pushes the ready-made rofi script to the path
+  * ``make slock`` sets up the custom lock screen
+* ``make configs`` will setup the configuration requiremets for the packages
+
