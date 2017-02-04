@@ -1,0 +1,38 @@
+"*":
+  core:
+    allowPendingPaneItems: false
+    autoHideMenuBar: true
+    closeEmptyWindows: false
+    destroyEmptyPanes: false
+    disabledPackages: [
+      "ex-mode"
+    ]
+    excludeVcsIgnoredPaths: false
+    openEmptyEditorOnStart: false
+    projectHome: "/home/allan/"
+    themes: [
+      "seti-ui"
+      "monokai"
+    ]
+  editor:
+    fontFamily: "Go Mono"
+    fontSize: 12
+    preferredLineLength: 120
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: true
+  "exception-reporting":
+    userId: "91b94be4-1c0f-3d53-1362-30fbb32fe5ab"
+  "go-plus": {}
+  "gtk-dark-theme": {}
+  linter: {}
+  "one-dark-ui":
+    layoutMode: "Compact"
+  "seti-ui":
+    compactView: true
+    disableAnimations: true
+    font: "Default Atom Font"
+    themeColor: "Yellow"
+  "tree-view": {}
+  welcome:
+    showOnStartup: false

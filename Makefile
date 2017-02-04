@@ -76,7 +76,7 @@ configs: links slock rofi
 
 links:
 	if [ -f ~/.vim -a -f ~/.gitconfig ]; then \
-		rm ~/.vim ~/.vimrc ~/.bashrc ~/.bash_profile ~/.inputrc ~/.gitconfig ~/.profile ~/.screenrc; \
+		rm ~/.vim ~/.vimrc ~/.bashrc ~/.bash_profile ~/.inputrc ~/.gitconfig ~/.profile ~/.screenrc; ~/.atom/config.cson \
 	fi
 	ln -s "$(PWD)/.vim" ~/.vim
 	ln -s "$(PWD)/.vim/vimrc" ~/.vimrc
@@ -86,6 +86,7 @@ links:
 	ln -s "$(PWD)/.gitconfig" ~/.gitconfig
 	ln -s "$(PWD)/.profile" ~/.profile
 	ln -s "$(PWD)/.screenrc" ~/.screenrc
+	ln -s "$(PWD)/.atom.config.cson" ~/.atom/config.cson
 	cp -r "$(PWD)/.config" ~/.config
 
 slock:
