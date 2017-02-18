@@ -1,7 +1,7 @@
 PWD=`pwd`
 SLOCK="/usr/local/bin/slock"
 ROFI="/usr/local/bin/rofi"
-GOPKG="go1.7.4.linux-amd64.tar.gz"
+GOPKG="go1.8.linux-amd64.tar.gz"
 
 all: packages configs
 	reset
@@ -56,6 +56,7 @@ go: go-pkg go-deps
 go-pkg:
 	wget https://storage.googleapis.com/golang/$(GOPKG)
 	sudo tar -xzf $(GOPKG) -C /opt
+	rm $(GOPKG)
 
 go-deps:
 	go get -u github.com/nsf/gocode
