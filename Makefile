@@ -68,6 +68,7 @@ go-deps:
 	go get -u sourcegraph.com/sqs/goreturns
 	go get -u github.com/kardianos/govendor
 	go get -u github.com/mvdan/interfacer/cmd/interfacer
+	go get -u github.com/golang/dep/...
 
 opam:
 	opam init -n
