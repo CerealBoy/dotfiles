@@ -9,20 +9,27 @@ all: packages configs
 submodules:
 	git submodule update --remote --recursive
 
-packages: keys sources debs powerline curls
+packages: keys sources debs docker-fix powerline curls
 
 keys:
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv CF8E292A
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 sources:
 	echo "deb http://repo.pritunl.com/stable/apt xenial main" | sudo tee /etc/apt/sources.list.d/pritunl.list > /dev/null
 	echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+	echo "deb https://download.docker.com/linux/ubuntu xenial stable" | sudo tee /etc/apt/sources.list.d/docker.list
 
 debs:
 	sudo apt update
-	sudo apt -y install cowsay curl direnv fortune git i3lock ocaml opam plank pritunl-client-gtk rofi scrot spotify-client vim-gtk3 xbacklight
+	sudo apt -y install cowsay curl direnv docker-ce fortune git i3lock ocaml opam plank pritunl-client-gtk rofi scrot spotify-client vim-gtk3 xbacklight
 	sudo apt -y upgrade
+
+docker-fix:
+	sudo gpasswd -a `whoami` docker
+	sudo service docker restart
+	newgrp docker
 
 curls: icdiff atom go opam
 
