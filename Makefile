@@ -23,7 +23,7 @@ sources:
 
 debs:
 	sudo apt update
-	sudo apt -y install cowsay curl direnv docker-ce fortune git i3lock ocaml opam plank pritunl-client-gtk rofi scrot spotify-client vim-gtk3 xbacklight
+	sudo apt -y install cowsay curl direnv docker-ce fortune git i3lock libssl-dev m4 ocaml opam pkg-config plank pritunl-client-gtk rofi scrot spotify-client vim-gtk3 xbacklight
 	sudo apt -y upgrade
 
 docker-fix:
