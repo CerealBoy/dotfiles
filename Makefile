@@ -21,15 +21,15 @@ sources:
 
 debs:
 	sudo apt update
-	sudo apt -y install cowsay direnv fortune i3lock ocaml opam plank pritunl-client-gtk rofi scrot spotify-client
+	sudo apt -y install cowsay curl direnv fortune git i3lock ocaml opam plank pritunl-client-gtk rofi scrot spotify-client vim-gtk3 xbacklight
 	sudo apt -y upgrade
 
 curls: icdiff atom go opam
 
 powerline:
-	cd powerline/fonts && ./install.sh && cd ../..
-	cd powerline/shell && ./install.py && cd ../..
-	ln -s $(PWD)/powerline/shell/powerline-shell.py ~/.powerline.py
+	cd powerline/fonts && chmod a+x ./install.sh && ./install.sh && cd ../..
+	cd powerline/shell && chmod a+x ./install.py && ./install.py && cd ../..
+	rm ~/.powerline.py && ln -s $(PWD)/powerline/shell/powerline-shell.py ~/.powerline.py
 
 icdiff:
 	curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.8.1/icdiff | \
@@ -59,16 +59,16 @@ go-pkg:
 	rm $(GOPKG)
 
 go-deps:
-	go get -u github.com/nsf/gocode
-	go get -u github.com/axw/gocov/gocov
-	go get -u gopkg.in/matm/v1/gocov-html
-	go get -u github.com/zmb3/gogetdoc
-	go get -u golang.org/x/tools/cmd/goimports
-	go get -u gopkg.in/alecthomas/gometalinter.v1
-	go get -u sourcegraph.com/sqs/goreturns
-	go get -u github.com/kardianos/govendor
-	go get -u github.com/mvdan/interfacer/cmd/interfacer
-	go get -u github.com/golang/dep/...
+	/opt/go/bin/go get -u github.com/nsf/gocode
+	/opt/go/bin/go get -u github.com/axw/gocov/gocov
+	/opt/go/bin/go get -u gopkg.in/matm/v1/gocov-html
+	/opt/go/bin/go get -u github.com/zmb3/gogetdoc
+	/opt/go/bin/go get -u golang.org/x/tools/cmd/goimports
+	/opt/go/bin/go get -u gopkg.in/alecthomas/gometalinter.v1
+	/opt/go/bin/go get -u sourcegraph.com/sqs/goreturns
+	/opt/go/bin/go get -u github.com/kardianos/govendor
+	/opt/go/bin/go get -u github.com/mvdan/interfacer/cmd/interfacer
+	/opt/go/bin/go get -u github.com/golang/dep/...
 
 opam:
 	opam init -n
@@ -77,8 +77,8 @@ opam:
 configs: links slock rofi
 
 links:
-	if [ -f ~/.vim -a -f ~/.gitconfig ]; then \
-		rm ~/.vim ~/.vimrc ~/.bashrc ~/.bash_profile ~/.inputrc ~/.gitconfig ~/.profile ~/.screenrc; ~/.atom/config.cson \
+	if [ -d ~/.vim -o -f ~/.gitconfig ]; then \
+		(rm -r ~/.vim ~/.vimrc ~/.bashrc ~/.bash_profile ~/.inputrc ~/.gitconfig ~/.profile ~/.screenrc; ~/.atom/config.cson > /dev/null 2>&1) \
 	fi
 	ln -s "$(PWD)/.vim" ~/.vim
 	ln -s "$(PWD)/.vim/vimrc" ~/.vimrc
@@ -101,4 +101,4 @@ rofi:
 		sudo rm "$(ROFI)"; \
 	fi && sudo ln -s "$(PWD)/rofi" "$(ROFI)"
 
-.PHONY: powerline
+.PHONY: powerline rofi slock
