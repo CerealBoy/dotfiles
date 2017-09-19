@@ -6,16 +6,9 @@ if [ "$HOME" = "" ]; then
     export HOME=~
 fi
 
-# can has keyboard lights
-xset led 3
-xbacklight -set 100
-
 export EDITOR=vim
-export GOPATH=~/go
-export GOROOT=/opt/go
 PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/home/y/bin:/home/y/bin64:~:/usr/local/go/bin:$GOPATH/bin:$GOROOT/bin:~/.composer/vendor/bin:/home/allan/e360/services/bin:/home/allan/.opam/system/bin:/usr/games
 export PATH
-export GOPATH=~/go/
 
 export CLICOLOR=1
 export TERM=xterm-256color
@@ -27,10 +20,9 @@ if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
-alias la="ls -la --color=auto"
-alias lg="ls -gahS --color=auto"
-alias ls="ls -G --color=auto"
-alias lr="ls -lart --color=auto"
+alias la="ls -la"
+alias lg="ls -gahS"
+alias lr="ls -lart"
 alias hist="sort | uniq -c | sort -nr"
 
 # doge git
@@ -66,4 +58,3 @@ function gitr {
     git rebase -i master # pull in the commits from master to the branch
 }
 
-fortune -e fortunes | cowsay
