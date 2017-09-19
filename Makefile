@@ -6,6 +6,19 @@ GOPKG="go1.8.linux-amd64.tar.gz"
 all: packages configs
 	reset
 
+osx: icdiff powerline direnv uscripts
+
+direnv:
+	curl https://github.com/direnv/direnv/releases/download/v2.12.2/direnv.darwin-amd64 | \
+		sudo tee /usr/local/bin/direnv > /dev/null && \
+		sudo chmod a+rx /usr/local/bin/direnv
+
+uscripts:
+	for file in $(shell ls -1 ./scripts/); do \
+		sudo ln $(PWD)/scripts/$${file} /usr/local/bin/$${file}; \
+		sudo chmod a+x /usr/local/bin/$${file}; \
+	done
+
 submodules:
 	git submodule update --remote --recursive
 
@@ -39,10 +52,10 @@ powerline:
 	rm ~/.powerline.py && ln -s $(PWD)/powerline/shell/powerline-shell.py ~/.powerline.py
 
 icdiff:
-	curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.8.1/icdiff | \
+	curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.0/icdiff | \
     	sudo tee /usr/local/bin/icdiff > /dev/null && \
     	sudo chmod a+rx /usr/local/bin/icdiff
-	curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.8.1/git-icdiff | \
+	curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.0/git-icdiff | \
     	sudo tee /usr/local/bin/git-icdiff > /dev/null && \
     	sudo chmod a+rx /usr/local/bin/git-icdiff
 

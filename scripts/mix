@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker run --rm -it --name mix -v $(pwd):/usr/src/mix --workdir=/usr/src/mix elixir:alpine mix $@
+
