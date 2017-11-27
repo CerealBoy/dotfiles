@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker run --rm -it -e HEROKU_API_KEY=$HEROKU_API_KEY -v $(pwd)/:/app/ --workdir=/app driftrock/heroku-cli "$@"
+
