@@ -3,11 +3,11 @@
 /usr/bin/rofi -show run \
     -bw 5 \
     -color-enabled true \
-    -color-window "argb:ee222222, #79a4e5, #79a4e5" \
-    -color-normal "argb:0000000, #79a4e5, argb:0000000, #79a4e5, #1b2b34" \
-    -color-active "argb:0000000, #6699cc, argb:0000000, #6699cc, #1b2b34" \
-    -color-urgent "argb:0000000, #79a4e5, argb:0000000, #79a4e5, #1b2b34" \
     -font "Noto Sans 12" \
+    -color-window "argb:ee222222, #79a4e5, #79a4e5" \
+    -color-normal "argb:00000000, #79a4e5, argb:00000000, #79a4e5, #1b2b34" \
+    -color-active "argb:00000000, #6699cc, argb:00000000, #6699cc, #1b2b34" \
+    -color-urgent "argb:00000000, #79a4e5, argb:00000000, #79a4e5, #1b2b34" \
     -hide-scrollbar true \
     -line-margin 3 \
     -lines 20 \
