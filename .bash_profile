@@ -14,9 +14,10 @@ export CLICOLOR=1
 export TERM=xterm-256color
 
 function _update_ps1() {
-    PS1="$(~/.powerline.py $? 2> /dev/null)"
+    PS1=$(powerline-shell $?)
 }
-if [ "$TERM" != "linux" ]; then
+
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 

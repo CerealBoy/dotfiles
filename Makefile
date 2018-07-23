@@ -1,7 +1,8 @@
 PWD=`pwd`
 SLOCK="/usr/local/bin/slock"
 ROFI="/usr/local/bin/rofi"
-GOPKG="go1.8.linux-amd64.tar.gz"
+GOPKG="go1.10.3.linux-amd64.tar.gz"
+OS=`uname`
 
 all: packages configs
 	reset
@@ -9,9 +10,15 @@ all: packages configs
 osx: icdiff powerline direnv uscripts
 
 direnv:
-	curl https://github.com/direnv/direnv/releases/download/v2.12.2/direnv.darwin-amd64 | \
+	if [ "$(OS)" = "Linux" ]; then \
+		curl -sL https://github.com/direnv/direnv/releases/download/v2.17.0/direnv.linux-amd64 | \
 		sudo tee /usr/local/bin/direnv > /dev/null && \
-		sudo chmod a+rx /usr/local/bin/direnv
+		sudo chmod a+rx /usr/local/bin/direnv; \
+	else \
+		curl -sL https://github.com/direnv/direnv/releases/download/v2.17.0/direnv.darwin-amd64 | \
+		sudo tee /usr/local/bin/direnv > /dev/null && \
+		sudo chmod a+rx /usr/local/bin/direnv; \
+	fi
 
 uscripts:
 	for file in $(shell ls -1 ./scripts/); do \
@@ -20,6 +27,7 @@ uscripts:
 	done
 
 submodules:
+	git submodule init
 	git submodule update --remote --recursive
 
 packages: keys sources debs docker-fix powerline curls
@@ -36,7 +44,7 @@ sources:
 
 debs:
 	sudo apt update
-	sudo apt -y install cowsay curl direnv docker-ce fortune git i3lock libssl-dev m4 ocaml opam pkg-config plank pritunl-client-gtk rofi scrot spotify-client vim-gtk3 xbacklight
+	sudo apt -y install cowsay curl direnv docker-ce fortune-mod git i3lock libssl-dev m4 ocaml opam pkg-config plank pritunl-client-gtk python-pip rofi scrot spotify-client vim-gtk3 xbacklight
 	sudo apt -y upgrade
 
 docker-fix:
@@ -47,9 +55,8 @@ docker-fix:
 curls: icdiff atom go opam docker-compose
 
 powerline:
-	cd powerline/fonts && chmod a+x ./install.sh && ./install.sh && cd ../..
-	cd powerline/shell && chmod a+x ./install.py && ./install.py && cd ../..
-	rm ~/.powerline.py && ln -s $(PWD)/powerline/shell/powerline-shell.py ~/.powerline.py
+	sudo apt -y install fonts-powerline
+	cd powerline/shell && sudo python setup.py install
 
 icdiff:
 	curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.0/icdiff | \
@@ -87,7 +94,6 @@ go-deps:
 	/opt/go/bin/go get -u gopkg.in/alecthomas/gometalinter.v1
 	/opt/go/bin/go get -u sourcegraph.com/sqs/goreturns
 	/opt/go/bin/go get -u github.com/kardianos/govendor
-	/opt/go/bin/go get -u github.com/mvdan/interfacer/cmd/interfacer
 	/opt/go/bin/go get -u github.com/golang/dep/...
 
 opam:
@@ -112,7 +118,6 @@ links:
 	ln -s "$(PWD)/.gitconfig" ~/.gitconfig
 	ln -s "$(PWD)/.profile" ~/.profile
 	ln -s "$(PWD)/.screenrc" ~/.screenrc
-	ln -s "$(PWD)/.atom.config.cson" ~/.atom/config.cson
 	cp -r "$(PWD)/.config" ~/.config
 
 slock:
