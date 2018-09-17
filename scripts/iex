@@ -1,3 +1,4 @@
 #!/bin/bash
 
-docker run --rm -it --name iex -v $(pwd):/usr/src/iex --workdir=/usr/src/iex elixir:alpine iex $@
+docker run --rm -it --name iex -v $(pwd):/usr/src/iex --workdir=/usr/src/iex cloudcloud/elixir:1.7-slim iex $@
+

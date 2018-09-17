@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker run --rm -it --name elixir -v $(pwd):/usr/src/elix --workdir=/usr/src/elix elixir:alpine elixir $@
+docker run --rm -it --name elixir -v $(pwd):/usr/src/elix --workdir=/usr/src/elix cloudcloud/elixir:1.7-slim elixir $@
 
