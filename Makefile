@@ -36,15 +36,17 @@ keys:
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv CF8E292A
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 
 sources:
 	echo "deb http://repo.pritunl.com/stable/apt xenial main" | sudo tee /etc/apt/sources.list.d/pritunl.list > /dev/null
 	echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 	echo "deb https://download.docker.com/linux/ubuntu xenial stable" | sudo tee /etc/apt/sources.list.d/docker.list
+	echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
 
 debs:
 	sudo apt update
-	sudo apt -y install cowsay curl direnv docker-ce fortune-mod git i3lock libssl-dev m4 ocaml opam pkg-config plank pritunl-client-gtk python-pip rofi scrot spotify-client vim-gtk3 xbacklight
+	sudo apt -y install cowsay curl direnv docker-ce fortune-mod git i3lock libssl-dev m4 ocaml opam pkg-config plank pritunl-client-gtk python-pip rofi scrot signal-desktop spotify-client vim-gtk3 xbacklight
 	sudo apt -y upgrade
 
 docker-fix:
