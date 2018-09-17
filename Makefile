@@ -1,7 +1,7 @@
 PWD=`pwd`
 SLOCK="/usr/local/bin/slock"
 ROFI="/usr/local/bin/rofi"
-GOPKG="go1.10.3.linux-amd64.tar.gz"
+GOPKG="go1.11.linux-amd64.tar.gz"
 OS=`uname`
 
 all: packages configs
