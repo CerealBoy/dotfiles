@@ -48,6 +48,9 @@ debs:
 	sudo apt update
 	sudo apt -y install cowsay curl direnv docker-ce fortune-mod git i3lock libssl-dev m4 ocaml opam pkg-config plank pritunl-client-gtk python-pip rofi scrot signal-desktop spotify-client vim-gtk3 xbacklight
 	sudo apt -y upgrade
+	wget -O ./code.deb https://go.microsoft.com/fwlink/?LinkID=760868 && \
+		sudo dpkg -i ./code.deb && \
+		rm ./code.deb
 
 docker-fix:
 	sudo gpasswd -a `whoami` docker
