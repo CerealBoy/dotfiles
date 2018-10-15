@@ -136,4 +136,13 @@ rofi:
 		sudo rm "$(ROFI)"; \
 	fi && sudo ln -s "$(PWD)/rofi" "$(ROFI)"
 
-.PHONY: powerline rofi slock
+nodejs:
+	curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+	curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+	sudo apt-get update && sudo apt-get -y install nodejs yarn
+
+git-heatmap:
+	sudo ln -s `pwd`/git-heatmap/git-heatmap /usr/local/bin/git-heatmap
+
+.PHONY: powerline rofi slock git-heatmap

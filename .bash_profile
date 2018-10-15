@@ -7,7 +7,7 @@ if [ "$HOME" = "" ]; then
 fi
 
 export EDITOR=vim
-PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/home/y/bin:/home/y/bin64:~:/usr/local/go/bin:$GOPATH/bin:$GOROOT/bin:~/.composer/vendor/bin:/home/allan/e360/services/bin:/home/allan/.opam/system/bin:/usr/games
+PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/home/y/bin:/home/y/bin64:~:/usr/local/go/bin:$GOPATH/bin:$GOROOT/bin:~/.composer/vendor/bin:/home/allan/e360/services/bin:/home/allan/.opam/system/bin:/usr/games:/opt/go/bin:/home/allan/go/bin:/home/allan/.cargo/bin
 export PATH
 
 export CLICOLOR=1
