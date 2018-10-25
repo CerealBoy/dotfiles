@@ -145,4 +145,14 @@ nodejs:
 git-heatmap:
 	sudo ln -s `pwd`/git-heatmap/git-heatmap /usr/local/bin/git-heatmap
 
+helm:
+	if [ "$(OS)" = "Linux" ]; then \
+		wget -O ./helm.tar.gz https://storage.googleapis.com/kubernetes-helm/helm-v2.11.0-linux-amd64.tar.gz; \
+	else \
+		wget -O ./helm.tar.gz https://storage.googleapis.com/kubernetes-helm/helm-v2.11.0-darwin-amd64.tar.gz; \
+	fi
+	tar -xzf ./helm.tar.gz && rm ./helm.tar.gz
+	sudo mv ./*-amd64/*l* /usr/local/bin/
+	rm -r ./*-amd64/
+
 .PHONY: powerline rofi slock git-heatmap
