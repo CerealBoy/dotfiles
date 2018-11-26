@@ -1,7 +1,7 @@
 PWD=`pwd`
 SLOCK="/usr/local/bin/slock"
 ROFI="/usr/local/bin/rofi"
-GOPKG="go1.11.linux-amd64.tar.gz"
+GOPKG="go1.11.2.linux-amd64.tar.gz"
 OS=`uname`
 
 all: packages configs
@@ -41,7 +41,7 @@ keys:
 sources:
 	echo "deb http://repo.pritunl.com/stable/apt xenial main" | sudo tee /etc/apt/sources.list.d/pritunl.list > /dev/null
 	echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-	echo "deb https://download.docker.com/linux/ubuntu xenial stable" | sudo tee /etc/apt/sources.list.d/docker.list
+	echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" | sudo tee /etc/apt/sources.list.d/docker.list
 	echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
 
 debs:
@@ -154,5 +154,13 @@ helm:
 	tar -xzf ./helm.tar.gz && rm ./helm.tar.gz
 	sudo mv ./*-amd64/*l* /usr/local/bin/
 	rm -r ./*-amd64/
+
+alacritty:
+	if [ "$(OS)" = "Linux" ]; then \
+		wget -O ./alacritty.tar.gz https://github.com/jwilm/alacritty/releases/download/v0.2.3/Alacritty-v0.2.3-x86_64.tar.gz; \
+		tar -xzf ./alacritty.tar.gz; \
+		sudo mv ./alacritty /usr/local/bin/alacritty; \
+		rm ./alacritty.tar.gz; \
+	fi
 
 .PHONY: powerline rofi slock git-heatmap

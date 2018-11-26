@@ -23,10 +23,10 @@ set noswapfile
 set nowrap
 set number
 set ruler
-set shiftwidth=4
+set shiftwidth=2
 set showmatch
-set softtabstop=4
-set tabstop=4
+set softtabstop=2
+set tabstop=2
 set gfn="Go Mono for Powerline"
 
 filetype on
