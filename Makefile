@@ -147,13 +147,16 @@ git-heatmap:
 
 helm:
 	if [ "$(OS)" = "Linux" ]; then \
-		wget -O ./helm.tar.gz https://storage.googleapis.com/kubernetes-helm/helm-v2.11.0-linux-amd64.tar.gz; \
+		wget -O ./helm.tar.gz https://storage.googleapis.com/kubernetes-helm/helm-v2.13.0-linux-amd64.tar.gz; \
+		wget -O ./helmfile https://github.com/roboll/helmfile/releases/download/v0.45.1/helmfile_linux_amd64; \
 	else \
-		wget -O ./helm.tar.gz https://storage.googleapis.com/kubernetes-helm/helm-v2.11.0-darwin-amd64.tar.gz; \
+		wget -O ./helm.tar.gz https://storage.googleapis.com/kubernetes-helm/helm-v2.13.0-darwin-amd64.tar.gz; \
+		wget -O ./helmfile https://github.com/roboll/helmfile/releases/download/v0.45.1/helmfile_darwin_amd64; \
 	fi
 	tar -xzf ./helm.tar.gz && rm ./helm.tar.gz
 	sudo mv ./*-amd64/*l* /usr/local/bin/
 	rm -r ./*-amd64/
+	chmod a+x helmfile && sudo mv helmfile /usr/local/bin/helmfile
 
 alacritty:
 	if [ "$(OS)" = "Linux" ]; then \
