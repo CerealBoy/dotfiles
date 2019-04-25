@@ -13,3 +13,5 @@
 	editor = vim
 [push]
 	default = simple
+[diff "sopsdiffer"]
+	textconv = sops -d
