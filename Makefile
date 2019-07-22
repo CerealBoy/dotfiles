@@ -1,8 +1,8 @@
 PWD=`pwd`
 SLOCK="/usr/local/bin/slock"
 ROFI="/usr/local/bin/rofi"
-GOPKG="go1.12.7.linux-amd64.tar.gz"
-OS=`uname`
+OS=$(shell uname | tr '[:upper:]' '[:lower:]')
+GOPKG=go1.12.7.$(OS)-amd64.tar.gz
 
 all: packages configs
 	reset
@@ -10,7 +10,7 @@ all: packages configs
 osx: icdiff powerline direnv uscripts
 
 direnv:
-	if [ "$(OS)" = "Linux" ]; then \
+	if [ "$(OS)" = "linux" ]; then \
 		curl -sL https://github.com/direnv/direnv/releases/download/v2.17.0/direnv.linux-amd64 | \
 		sudo tee /usr/local/bin/direnv > /dev/null && \
 		sudo chmod a+rx /usr/local/bin/direnv; \
@@ -60,7 +60,12 @@ docker-fix:
 curls: icdiff atom go opam docker-compose
 
 powerline:
-	sudo apt -y install fonts-powerline
+	if [ "$(OS)" = "linux" ]; then \
+		sudo apt -y install fonts-powerline; \
+	else \
+		cd powerline/fonts && sudo ./install.sh; \
+		cd ../..; \
+	fi
 	cd powerline/shell && sudo python setup.py install
 
 icdiff:
@@ -86,7 +91,7 @@ atom-deps:
 go: go-pkg go-deps
 
 go-pkg:
-	wget https://storage.googleapis.com/golang/$(GOPKG)
+	curl -sLO https://storage.googleapis.com/golang/$(GOPKG)
 	sudo rm -rf /opt/go
 	sudo tar -xzf $(GOPKG) -C /opt
 	rm $(GOPKG)
@@ -147,7 +152,7 @@ git-heatmap:
 	sudo ln -s `pwd`/git-heatmap/git-heatmap /usr/local/bin/git-heatmap
 
 helm:
-	if [ "$(OS)" = "Linux" ]; then \
+	if [ "$(OS)" = "linux" ]; then \
 		wget -O ./helm.tar.gz https://storage.googleapis.com/kubernetes-helm/helm-v2.13.0-linux-amd64.tar.gz; \
 		wget -O ./helmfile https://github.com/roboll/helmfile/releases/download/v0.45.1/helmfile_linux_amd64; \
 	else \
@@ -160,7 +165,7 @@ helm:
 	chmod a+x helmfile && sudo mv helmfile /usr/local/bin/helmfile
 
 alacritty:
-	if [ "$(OS)" = "Linux" ]; then \
+	if [ "$(OS)" = "linux" ]; then \
 		wget -O ./alacritty.tar.gz https://github.com/jwilm/alacritty/releases/download/v0.2.3/Alacritty-v0.2.3-x86_64.tar.gz; \
 		tar -xzf ./alacritty.tar.gz; \
 		sudo mv ./alacritty /usr/local/bin/alacritty; \

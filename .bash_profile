@@ -21,9 +21,15 @@ if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
-alias la="ls -la --color=auto"
-alias lg="ls -gahS --color=auto"
-alias lr="ls -lart --color=auto"
+if [ "`uname`" = "Linux" ]; then
+  alias la="ls -la --color=auto"
+  alias lg="ls -gahS --color=auto"
+  alias lr="ls -lart --color=auto"
+else
+  alias la="ls -la "
+  alias lg="ls -gahS "
+  alias lr="ls -lart "
+fi
 alias hist="sort | uniq -c | sort -nr"
 
 # doge git
