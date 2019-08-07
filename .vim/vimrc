@@ -27,7 +27,8 @@ set shiftwidth=2
 set showmatch
 set softtabstop=2
 set tabstop=2
-set gfn="Go Mono for Powerline"
+set gfn=Go\ Mono\ for\ Powerline:h10
+set guifont=Go\ Mono\ for\ Powerline:h10
 
 filetype on
 filetype plugin on

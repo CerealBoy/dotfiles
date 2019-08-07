@@ -7,7 +7,12 @@ if [ "$HOME" = "" ]; then
 fi
 
 export EDITOR=vim
-PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/home/y/bin:/home/y/bin64:~:/usr/local/go/bin:$GOPATH/bin:$GOROOT/bin:~/.composer/vendor/bin:/home/allan/e360/services/bin:/home/allan/.opam/system/bin:/usr/games:/opt/go/bin:/home/allan/go/bin:/home/allan/.cargo/bin:/home/allan/.yarn/bin:.
+PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/opt/go/bin:.
+if [ $TERM != linux ]; then
+  PATH=$PATH:/Users/ashone/go/bin:/Users/ashone:/Users/ashone/.composer/vendor/bin:/Users/ashone/.opam/system/bin:/Users/ashone/.yarn/bin:/Users/ashone/.cargo/bin:/Users/ashone/go/bin
+else
+  PATH=$PATH:/home/ashone/go/bin:/home/ashone:/home/ashone/.composer/vendor/bin:/home/ashone/.opam/system/bin:/home/ashone/.yarn/bin:/home/ashone/.cargo/bin:/home/ashone/go/bin
+fi
 export PATH
 
 export CLICOLOR=1
@@ -37,12 +42,25 @@ alias wow="git status"
 alias such="git $*"
 alias very="git $*"
 alias ic="git-icdiff"
+alias tplan='terraform plan -out /tmp/tplan'
+alias tapply='terraform apply /tmp/tplan'
 
 # run direnv setup
 eval "$(direnv hook bash)"
 
+if [ -f "$(which terraform-docs)" ]; then
+  source <(terraform-docs completion bash)
+fi
+
 # opam configuration
-. /home/allan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+if [ -f ~/.opam/opam-init/init.sh ]; then
+  . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+fi
+
+# non-checked in profile script
+if [ -f ~/.bash_local ]; then
+  . ~/.bash_local
+fi
 
 #function dock-php() {
 #  DIR=$(readlink -f $(pwd))
