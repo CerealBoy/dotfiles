@@ -7,7 +7,7 @@ if [ "$HOME" = "" ]; then
 fi
 
 export EDITOR=vim
-PATH=/bin:/usr/local:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/opt/go/bin:.
+PATH=/usr/local:/usr/local/bin:/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/opt/go/bin:.
 if [ $TERM != linux ]; then
   PATH=$PATH:/Users/ashone/go/bin:/Users/ashone:/Users/ashone/.composer/vendor/bin:/Users/ashone/.opam/system/bin:/Users/ashone/.yarn/bin:/Users/ashone/.cargo/bin:/Users/ashone/go/bin
 else
@@ -60,6 +60,10 @@ fi
 # non-checked in profile script
 if [ -f ~/.bash_local ]; then
   . ~/.bash_local
+fi
+
+if [ -f /usr/local/share/chtf/chtf.sh ]; then
+  . /usr/local/share/chtf/chtf.sh
 fi
 
 #function dock-php() {

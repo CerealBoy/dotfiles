@@ -15,3 +15,5 @@
 	default = simple
 [diff "sopsdiffer"]
 	textconv = sops -d
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
