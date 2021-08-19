@@ -42,7 +42,9 @@ alias wow="git status"
 alias such="git $*"
 alias very="git $*"
 alias ic="git-icdiff"
-alias tplan='terraform plan -out /tmp/tplan'
+
+alias twork='terraform workspace select'
+alias tplan='terraform plan -parallelism=80 -out /tmp/tplan'
 alias tapply='terraform apply /tmp/tplan'
 
 # run direnv setup
@@ -74,8 +76,8 @@ fi
 
 # simpler master update for git
 function gitu {
-    BRANCH=${1:-master}
-    BRANCH_TWO=${2:-master}
+    BRANCH=${1:-main}
+    BRANCH_TWO=${2:-main}
     git checkout "$BRANCH" && git fetch origin && git merge --ff-only origin/"$BRANCH_TWO"
 }
 
