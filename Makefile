@@ -62,11 +62,12 @@ curls: icdiff atom go opam docker-compose
 powerline:
 	if [ "$(OS)" = "linux" ]; then \
 		sudo apt -y install fonts-powerline; \
+		sudo pip3 install powerline-shell; \
 	else \
 		cd powerline/fonts && sudo ./install.sh; \
 		cd ../..; \
+		brew install powerline-go; \
 	fi
-	cd powerline/shell && sudo python setup.py install
 
 icdiff:
 	curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.0/icdiff | \
@@ -120,7 +121,7 @@ configs: links slock rofi
 
 links:
 	if [ -d ~/.vim -o -f ~/.gitconfig ]; then \
-		(rm -r ~/.vim ~/.vimrc ~/.bashrc ~/.bash_profile ~/.inputrc ~/.gitconfig ~/.profile ~/.screenrc; ~/.atom/config.cson > /dev/null 2>&1) \
+		(rm -r ~/.vim ~/.vimrc ~/.bashrc ~/.bash_profile ~/.inputrc ~/.gitconfig ~/.profile ~/.screenrc; ~/.atom/config.cson > /dev/null 2>&1 || true) \
 	fi
 	ln -s "$(PWD)/.vim" ~/.vim
 	ln -s "$(PWD)/.vim/vimrc" ~/.vimrc

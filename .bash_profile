@@ -19,11 +19,11 @@ export CLICOLOR=1
 export TERM=xterm-256color
 
 function _update_ps1() {
-    PS1=$(powerline-shell $?)
+  PS1=$(powerline-go $?)
 }
 
 if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
 if [ "`uname`" = "Linux" ]; then
@@ -46,6 +46,7 @@ alias ic="git-icdiff"
 alias twork='terraform workspace select'
 alias tplan='terraform plan -parallelism=80 -out /tmp/tplan'
 alias tapply='terraform apply /tmp/tplan'
+alias tfwl='terraform workspace list'
 
 # run direnv setup
 eval "$(direnv hook bash)"
