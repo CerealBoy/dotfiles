@@ -7,7 +7,6 @@ syntax on
 
 set pyxversion=3
 if has('python3_compiled')
-  echo 'compiled with Python 3.x support'
   if has('python3_dynamic')
     echo 'Python 3.x dynamically loaded'
   endif
@@ -16,6 +15,45 @@ if has('python3_compiled')
 endif
 
 colorscheme wombat256mod
+
+call plug#begin()
+" Switching to use Plug
+
+Plug 'junegunn/vim-easy-align'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
+Plug 'rust-lang/rust.vim'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+  \ 'coc-tsserver'
+  \ ]
+
+Plug 'yegappan/grep'
+Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'edkolev/promptline.vim'
+Plug 'scrooloose/syntastic'
+Plug 'edkolev/tmuxline.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'powerline/fonts'
+Plug 'banga/powerline-shell'
+Plug 'hashivim/vim-terraform'
+Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'posva/vim-vue'
+Plug 'elixir-editors/vim-elixir'
+call plug#end()
+
+if has("gui_macvim")
+  set macmeta
+endif
 
 set autochdir
 set backspace=indent,eol,start
@@ -38,15 +76,11 @@ set showmatch
 set softtabstop=2
 set tabstop=2
 set gfn=Go\ Mono\ for\ Powerline:h10
-set guifont=Go\ Mono\ for\ Powerline:h10
+set guifont=Go\ Mono\ for\ Powerline:h13
 
 filetype on
 filetype plugin on
 filetype indent on
-
-if has("gui_macvim")
-    set macmeta
-endif
 
 command! LN set nonumber!
 command! RC :source $MYVIMRC
@@ -72,7 +106,7 @@ noremap gw :Autoformat<CR><CR>
 
 imap <C-c> <CR><Esc>O
 
-execute pathogen#infect()
+"execute pathogen#infect()
 let g:localvimrc_ask = 0
 
 let g:promptline_preset = {
@@ -203,3 +237,37 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 :set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 :set list
 
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
+
+nnoremap <silent> K :call CocAction('doHover')<CR>
+
+function! ShowDocIfNoDiagnostic(timer_id)
+  if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+    silent call CocActionAsync('doHover')
+  endif
+endfunction
+
+function! s:show_hover_doc()
+  call timer_start(500, 'ShowDocIfNoDiagnostic')
+endfunction
+
+autocmd CursorHoldI * :call <SID>show_hover_doc()
+autocmd CursorHold * :call <SID>show_hover_doc()
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END

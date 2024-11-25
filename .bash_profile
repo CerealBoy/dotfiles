@@ -1,17 +1,17 @@
 # .bash_profile - making bash that much better
 
 unset USERNAME
-if [ "$HOME" = "" ]; then
+if [ "${HOME}" = "" ]; then
     echo "No HOME found, setting one"
     export HOME=~
 fi
 
 export EDITOR=vim
 PATH=/usr/local/opt/python\@3.7/bin:/usr/local:/usr/local/bin:/bin:/usr/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin:/usr/local/mysql/bin:/opt/go/bin:.
-if [ $TERM != linux ]; then
-  PATH=$PATH:/Users/ashone/go/bin:/Users/ashone:/Users/ashone/.composer/vendor/bin:/Users/ashone/.opam/system/bin:/Users/ashone/.yarn/bin:/Users/ashone/.cargo/bin:/Users/ashone/go/bin
+if [ "${TERM}" != "linux" -a "${TERM}" != "xterm-256color" ]; then
+  PATH=/opt/homebrew/bin:$PATH:/Users/ashone/go/bin:/Users/ashone:/Users/ashone/.composer/vendor/bin:/Users/ashone/.opam/system/bin:/Users/ashone/.yarn/bin:/Users/ashone/.cargo/bin:/Users/ashone/go/bin
 else
-  PATH=$PATH:/home/ashone/go/bin:/home/ashone:/home/ashone/.composer/vendor/bin:/home/ashone/.opam/system/bin:/home/ashone/.yarn/bin:/home/ashone/.cargo/bin:/home/ashone/go/bin
+  PATH=$PATH:/home/allan/go/bin:/home/allan:/home/allan/.composer/vendor/bin:/home/allan/.opam/system/bin:/home/allan/.yarn/bin:/home/allan/.cargo/bin:/usr/local/go/bin:/opt/nvim/bin
 fi
 export PATH
 
@@ -22,8 +22,8 @@ function _update_ps1() {
   PS1=$(powerline-go $?)
 }
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+if [[ "${TERM}" != linux && ! "${PROMPT_COMMAND}" =~ _update_ps1 ]]; then
+  PROMPT_COMMAND="_update_ps1; ${PROMPT_COMMAND}"
 fi
 
 if [ "`uname`" = "Linux" ]; then
@@ -60,11 +60,6 @@ if [ -f ~/.opam/opam-init/init.sh ]; then
   . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 fi
 
-# non-checked in profile script
-if [ -f ~/.bash_local ]; then
-  . ~/.bash_local
-fi
-
 if [ -f /usr/local/share/chtf/chtf.sh ]; then
   . /usr/local/share/chtf/chtf.sh
 fi
@@ -77,16 +72,20 @@ fi
 
 # simpler master update for git
 function gitu {
-    BRANCH=${1:-main}
-    BRANCH_TWO=${2:-main}
-    git checkout "$BRANCH" && git fetch origin && git merge --ff-only origin/"$BRANCH_TWO"
+  BRANCH="${1:-main}"
+  git checkout "${BRANCH}" && git fetch origin && git merge --ff-only origin/"${BRANCH}"
 }
 
 # update and rebase
 function gitr {
-    ORIG_BRANCH="$(git st | cut -f3 -d' ' | head -n 1)"
-    gitu # update master from origin
-    git checkout "$ORIG_BRANCH" # move back to the original branch
-    git rebase -i master # pull in the commits from master to the branch
+  BRANCH="${1:-develop}"
+  ORIG_BRANCH="$(git st | cut -f3 -d' ' | head -n 1)"
+  gitu "${BRANCH}"
+  git checkout "${ORIG_BRANCH}"
+  git rebase -i "${BRANCH}"
 }
 
+# non-checked in profile script
+if [ -f ~/.bash_local ]; then
+  . ~/.bash_local
+fi

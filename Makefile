@@ -70,10 +70,10 @@ powerline:
 	fi
 
 icdiff:
-	curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.0/icdiff | \
+	curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-2.0.5/icdiff | \
     	sudo tee /usr/local/bin/icdiff > /dev/null && \
     	sudo chmod a+rx /usr/local/bin/icdiff
-	curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.0/git-icdiff | \
+	curl -s https://raw.githubusercontent.com/jeffkaufman/icdiff/release-2.0.5/git-icdiff | \
     	sudo tee /usr/local/bin/git-icdiff > /dev/null && \
     	sudo chmod a+rx /usr/local/bin/git-icdiff
 
@@ -98,15 +98,15 @@ go-pkg:
 	rm $(GOPKG)
 
 go-deps:
-	/opt/go/bin/go get -u github.com/nsf/gocode
-	/opt/go/bin/go get -u github.com/axw/gocov/gocov
-	/opt/go/bin/go get -u gopkg.in/matm/v1/gocov-html
-	/opt/go/bin/go get -u github.com/zmb3/gogetdoc
-	/opt/go/bin/go get -u golang.org/x/tools/cmd/goimports
-	/opt/go/bin/go get -u gopkg.in/alecthomas/gometalinter.v1
-	/opt/go/bin/go get -u sourcegraph.com/sqs/goreturns
-	/opt/go/bin/go get -u github.com/kardianos/govendor
-	/opt/go/bin/go get -u github.com/golang/dep/...
+	go install github.com/nsf/gocode@latest
+	go install github.com/axw/gocov/gocov@latest
+	go install gopkg.in/matm/v1/gocov-html@latest
+	go install github.com/zmb3/gogetdoc@latest
+	go install golang.org/x/tools/cmd/goimports@latest
+	go install gopkg.in/alecthomas/gometalinter.v1@latest
+	go install sourcegraph.com/sqs/goreturns@latest
+	go install github.com/kardianos/govendor@latest
+	go install github.com/golang/dep/...@latest
 
 opam:
 	opam init -n
