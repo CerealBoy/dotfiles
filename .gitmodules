@@ -1,93 +1,9 @@
-[submodule ".vim/bundle/delimitMate"]
-	path = .vim/bundle/delimitMate
-	url = git@github.com:Raimondi/delimitMate.git
-[submodule ".vim/bundle/grep"]
-	path = .vim/bundle/grep
-	url = git@github.com:yegappan/grep.git
-[submodule ".vim/bundle/lightline.vim"]
-	path = .vim/bundle/lightline.vim
-	url = git@github.com:itchyny/lightline.vim.git
-[submodule ".vim/bundle/nerdcommenter"]
-	path = .vim/bundle/nerdcommenter
-	url = git@github.com:scrooloose/nerdcommenter.git
-[submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
-	url = git@github.com:scrooloose/nerdtree.git
-[submodule ".vim/bundle/promptline.vim"]
-	path = .vim/bundle/promptline.vim
-	url = git@github.com:edkolev/promptline.vim.git
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
-	url = git@github.com:scrooloose/syntastic.git
-[submodule ".vim/bundle/tlib_vim"]
-	path = .vim/bundle/tlib_vim
-	url = git@github.com:tomtom/tlib_vim.git
-[submodule ".vim/bundle/tmuxline.vim"]
-	path = .vim/bundle/tmuxline.vim
-	url = git@github.com:edkolev/tmuxline.vim.git
-[submodule ".vim/bundle/vim-addon-mw-utils"]
-	path = .vim/bundle/vim-addon-mw-utils
-	url = git@github.com:MarcWeber/vim-addon-mw-utils.git
-[submodule ".vim/bundle/vim-autoformat"]
-	path = .vim/bundle/vim-autoformat
-	url = git@github.com:Chiel92/vim-autoformat.git
-[submodule ".vim/bundle/vim-colorschemes"]
-	path = .vim/bundle/vim-colorschemes
-	url = git@github.com:flazz/vim-colorschemes.git
-[submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
-	url = git@github.com:tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-indent-guides"]
-	path = .vim/bundle/vim-indent-guides
-	url = git@github.com:nathanaelkane/vim-indent-guides.git
-[submodule ".vim/bundle/vim-javascript"]
-	path = .vim/bundle/vim-javascript
-	url = git@github.com:pangloss/vim-javascript.git
-[submodule ".vim/bundle/vim-go"]
-	path = .vim/bundle/vim-go
-	url = git@github.com:fatih/vim-go.git
-[submodule ".vim/bundle/vim-javascript-syntax"]
-	path = .vim/bundle/vim-javascript-syntax
-	url = git@github.com:jelera/vim-javascript-syntax.git
-[submodule ".vim/bundle/vim-mustache-handlebars"]
-	path = .vim/bundle/vim-mustache-handlebars
-	url = git@github.com:mustache/vim-mustache-handlebars.git
-[submodule ".vim/bundle/vim-repeat"]
-	path = .vim/bundle/vim-repeat
-	url = git@github.com:tpope/vim-repeat.git
-[submodule ".vim/bundle/vim-snipmate"]
-	path = .vim/bundle/vim-snipmate
-	url = git@github.com:garbas/vim-snipmate.git
-[submodule ".vim/bundle/vim-snippets"]
-	path = .vim/bundle/vim-snippets
-	url = git@github.com:honza/vim-snippets.git
-[submodule ".vim/bundle/vim-surround"]
-	path = .vim/bundle/vim-surround
-	url = git@github.com:tpope/vim-surround.git
-[submodule ".vim/bundle/vim-alda"]
-	path = .vim/bundle/vim-alda
-	url = git@github.com:daveyarwood/vim-alda.git
-[submodule ".vim/bundle/Dockerfile.vim"]
-	path = .vim/bundle/Dockerfile.vim
-	url = git@github.com:ekalinin/Dockerfile.vim.git
 [submodule "powerline/fonts"]
 	path = powerline/fonts
 	url = git@github.com:powerline/fonts.git
 [submodule "powerline/shell"]
 	path = powerline/shell
 	url = git@github.com:banga/powerline-shell.git
-[submodule ".vim/bundle/vim-terraform"]
-	path = .vim/bundle/vim-terraform
-	url = git@github.com:hashivim/vim-terraform.git
 [submodule "git-heatmap"]
 	path = git-heatmap
 	url = git@github.com:jez/git-heatmap.git
-[submodule ".vim/bundle/vim-vue"]
-	path = .vim/bundle/vim-vue
-	url = https://github.com/posva/vim-vue
-[submodule ".vim/bundle/Jenkinsfile-vim-syntax"]
-	path = .vim/bundle/Jenkinsfile-vim-syntax
-	url = git@github.com:martinda/Jenkinsfile-vim-syntax.git
-[submodule ".vim/bundle/vim-elixir"]
-	path = .vim/bundle/vim-elixir
-	url = git@github.com:elixir-editors/vim-elixir.git
