@@ -1,25 +1,44 @@
 [user]
+	email = allan@buildkite.com
 	name = CerealBoy
-	email = allan.shone@gmail.com
+	signingkey = 2E99643A1B0F97A2
 [alias]
 	st = status
 	ci = commit
 	br = branch
 	gl = log --no-merges --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	graph=log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	pf = push --force
+	pf = push --force-with-lease
 	diff = icdiff
 [core]
-	editor = vim
+	editor = nvim
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  dark = true
+[merge]
+  conflictStyle = zdiff3
 [push]
 	default = simple
 [diff "sopsdiffer"]
 	textconv = sops -d
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+[url "https://github.com/"]
+  insteadOf = ssh://git@github.com
+  insteadOf = git@github.com:
 [commit]
 	gpgsign = true
 [rebase]
 	updateRefs = true
 [init]
 	defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://buildkite-ghe.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
