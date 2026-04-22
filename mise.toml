@@ -2,8 +2,15 @@
 node = "24.15.0"
 go = "1.26.2"
 ruby = "4.0.2"
+erlang = "28.0"
+elixir = "1.19.5"
 
 # Package management
 yarn = "4.14.1"
 
 chezmoi = "2.70.2"
+direnv = "2.37.1"
+jq = "1.8.1"
+neovim = "0.12.2"
+powerline-go = "1.26"
+yq = "4.53.2"
